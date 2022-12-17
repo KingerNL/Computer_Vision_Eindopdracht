@@ -1,7 +1,7 @@
 import numpy as np
 import cv2 as cv
 
-img = cv.imread('./dataset/Image1.jpg')
+img = cv.imread('./test_images/Image1.jpg')
 image = img.reshape((-1,3))
 K = 4
 
