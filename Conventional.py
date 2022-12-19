@@ -1,20 +1,27 @@
 import numpy as np
 import cv2 as cv
 
-img = cv.imread('./test_images_perfect/Image_Perfect (1).jpg')
-image = img.reshape((-1,3))
-K = 4
+frame = cv.imread('./test_images_perfect/Image_Perfect (1).jpg')
 
-# convert to np.float32
-image = np.float32(image)
+hsv = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
+    
+# Threshold of blue in HSV space
+lower_blue = np.array([30, 30, 100])
+upper_blue = np.array([70, 190, 210])
 
-# define criteria, number of clusters(K) and apply kmeans()
-criteria = (cv.TERM_CRITERIA_EPS + cv.TERM_CRITERIA_MAX_ITER, 10, 1.0)
-ret, label, center = cv.kmeans(image, K,None,criteria,10,cv.KMEANS_RANDOM_CENTERS)
+# preparing the mask to overlay
+mask = cv.inRange(hsv, lower_blue, upper_blue)
 
-# Now convert back into uint8, and make original image
-center = np.uint8(center)
-res = center[label.flatten()]
-res2 = res.reshape((img.shape))
+# invert mask naar black background, white object    
+mask = cv.bitwise_not(mask)    
 
-cv.imwrite("./result_conventional/result1.jpg", res2)
+kernel = np.ones((5, 5), np.uint8)
+
+mask = cv.erode(mask, kernel, iterations=1)
+mask = cv.erode(mask, kernel, iterations=1)
+
+mask = cv.dilate(mask, kernel, iterations=1)
+mask = cv.dilate(mask, kernel, iterations=1)
+
+
+cv.imwrite("./result_conventional/result1.jpg", mask)
