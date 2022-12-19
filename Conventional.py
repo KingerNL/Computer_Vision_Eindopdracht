@@ -1,7 +1,7 @@
 import numpy as np
 import cv2 as cv
 
-img = cv.imread('./test_images/Image1.jpg')
+img = cv.imread('./test_images_perfect/Image_Perfect (1).jpg')
 image = img.reshape((-1,3))
 K = 4
 
@@ -17,6 +17,4 @@ center = np.uint8(center)
 res = center[label.flatten()]
 res2 = res.reshape((img.shape))
 
-cv.imshow('res2',res2)
-cv.waitKey(0)
-cv.destroyAllWindows()
+cv.imwrite("./result_conventional/result1.jpg", res2)
