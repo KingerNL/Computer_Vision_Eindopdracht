@@ -1,20 +1,26 @@
+# -=-=-=- IMPORT LIBRARY'S -=-=-=- #
 import numpy as np
 import cv2 as cv
 
-frame = cv.imread('./test_images_perfect/Image_Perfect (1).jpg')
+# -=-=-=- IMAGES UITLEZEN -=-=-=- #
+original_image = cv.imread('./test_images_perfect/Image_Perfect (1).jpg')
 
-hsv = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
+hsv_image = cv.cvtColor(original_image, cv.COLOR_BGR2HSV)
     
-# Threshold of blue in HSV space
-lower_blue = np.array([30, 30, 100])
-upper_blue = np.array([70, 190, 210])
+# -=-=-=- CONTOURS VINDEN -=-=-=- #
+# Dit zijn de:         Hue, Saturation, Value
+lower_color = np.array([30,     30,      100])
+upper_color = np.array([70,     190,     210])
 
-# preparing the mask to overlay
-mask = cv.inRange(hsv, lower_blue, upper_blue)
-
-# invert mask naar black background, white object    
+# -=-=-=- IMAGE PRE-PROCESSING -=-=-=- #
+"""
+    1. haal alle aangegeven kleuren weg
+    2. inverteer afbeelding
+"""
+mask = cv.inRange(hsv_image, lower_color, upper_color)
 mask = cv.bitwise_not(mask)    
 
+# -=-=-=- ERODE / DILATE -=-=-=- #
 kernel = np.ones((5, 5), np.uint8)
 
 mask = cv.erode(mask, kernel, iterations=1)
@@ -24,4 +30,10 @@ mask = cv.dilate(mask, kernel, iterations=1)
 mask = cv.dilate(mask, kernel, iterations=1)
 
 
-cv.imwrite("./result_conventional/result1.jpg", mask)
+# -=-=-=- CONTOURS VINDEN -=-=-=- #
+contours, hierarchy = cv.findContours(mask, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_NONE)
+
+cv.drawContours(original_image, contours, -1, (255,0,255), 5)
+
+# -=-=-=- AFBEELDINGEN OPSLAAN -=-=-=- #
+cv.imwrite("./result_conventional/result1.jpg", original_image)
