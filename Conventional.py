@@ -28,6 +28,7 @@ mask = cv.erode(mask, kernel, iterations=1)
 
 mask = cv.dilate(mask, kernel, iterations=1)
 mask = cv.dilate(mask, kernel, iterations=1)
+mask = cv.dilate(mask, kernel, iterations=1)
 
 
 # -=-=-=- CONTOURS VINDEN -=-=-=- #
