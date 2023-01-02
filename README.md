@@ -49,7 +49,7 @@ for all the Prerequisites, I would suggest downloading all the requirements.txt 
 $ pip install -r requirements.txt
 ```
 
-if there are any problems please open a ticket or send me a message.
+if there are any problems please open a ticket or send me a message *(The requirements are made with pipreqs)*.
 
 ## General Layout <a name = "general_layout"></a>
 
@@ -77,7 +77,7 @@ if there are any problems please open a ticket or send me a message.
 └── requirements.txt
 ```
 
-By the time of this writing we are still making the deep learning algoritm.
+By the time of this writing we are still making the deep learning algoritm (Using Detectron 2).
 
 ## How to run <a name = "how_to_run"></a>
 
