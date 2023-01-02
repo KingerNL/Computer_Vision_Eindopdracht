@@ -88,7 +88,7 @@ for img in images:
     
 
     # -=-=- draw contours and put text -=-=- #
-    # om een specifieke contour te maken, gebruik cnt = contours[1], en cnt als var
+    # to make a specific contour, use cnt = contours[1], and cnt as a var (instead of img.contours)
     img_with_contour = cv.drawContours(img.cv_image, img.contours, -1, (255,0,255), 3)
     
     for contour in range(len(img.contours)):
