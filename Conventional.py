@@ -104,5 +104,4 @@ for img in images:
     
     # -=-=- save image -=-=- #
     output_dir  = os.path.join(root_dir,'output_conventional', img.name)
-    
     cv.imwrite(output_dir, img_with_text)
