@@ -16,7 +16,6 @@ class image():
     def add_contour(self, contour):
         self.contours.append(contour)
 
-# TODO: Deze nog toepassen in code
 class object():
     def __init__(self):
         self.kind_of_object = None
@@ -71,13 +70,23 @@ for img in images:
     for contour in contours:
         if (cv.contourArea(contour) > contour_area):
             img.add_contour(contour)
+            contour = object()
+            
+    # print("found", len(img.contours), "contours in", img.name)
+
+    # -=-=- find oriëntation -=-=- #
+    # TODO: Check this function
+    for contour in img.contours:
+        (x,y),(MA,ma),angle = cv.fitEllipse(contour)
+        object.oriëntation = angle
         
-    # -=-=- find orientation -=-=- #
-    # for contour in img.contours:
-    #     (x,y),(MA,ma),angle = cv.fitEllipse(contour)
+    # -=-=- find closest color -=-=- #
+    # TODO: make this function
     
-    print("found", len(img.contours), "contours in", img.name)
+    # -=-=- find kind of object -=-=- #
+    # TODO: Make this function
     
+
     # -=-=- draw contours and put text -=-=- #
     # om een specifieke contour te maken, gebruik cnt = contours[1], en cnt als var
     img_with_contour = cv.drawContours(img.cv_image, img.contours, -1, (255,0,255), 3)
