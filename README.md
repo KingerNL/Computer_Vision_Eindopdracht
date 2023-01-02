@@ -10,10 +10,11 @@
 
 
 ## Introduction <a name = "introduction"></a>
+The idea of this project is to identify these objects using regular (conventional) image processing algorithms, and identify the objects using deep learning. To see the advantages and disadvantages of both.
 
 ![image of all parts](./test_images_val/val_image.jpg)
 
-As you can see there are 19 different objects we need to identify. We chose for 5 classes with the following information per class. The idea of this project is to identify these objects using regular (conventional) image processing algorithms, and identify the objects using deep learning. To see the advantages and disadvantages of both.
+As you can see there are 19 different objects we need to identify. We chose for 5 classes with the following information per class. 
 
 ### Different classes:
 
