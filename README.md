@@ -56,25 +56,20 @@ if there are any problems please open a ticket or send me a message.
 ```bash
 ├── input_conventional <- here are the input images for conventional image processing
 │   ├── img_1.jpg
-│   ├── img_2.jpg
-│   ├── [etc].jpg
+│   ├── ...
 ├── output_conventional <- these are the output images for conventional image processing
 │   ├── img_1.jpg
-│   ├── img_2.jpg
-│   ├── [etc].jpg
-├── test_images_1 <- dataset from first shoot
+│   ├── ...
+├── test_images_1 <- dataset shoot 1
 │   ├── img_1.jpg
-│   ├── img_2.jpg
-│   ├── [etc].jpg
-├── test_images_2 <- dataset from second shoot
+│   ├── ...
+├── test_images_2 <- dataset shoot 2
 │   ├── img_1.jpg
-│   ├── img_2.jpg
-│   ├── [etc].jpg
-├── test_images_crossed <- small dataset for crossed objects
+│   ├── ...
+├── test_images_crossed <- dataset shoot 1 (crossed)
 │   ├── img_1.jpg
-│   ├── img_2.jpg
-│   ├── [etc].jpg
-├── test_images_val <- just an image for the README.md
+│   ├── ...
+├── test_images_val <- just an image for the README.md (can be used for validation)
 │   ├── val_image.jpg
 ├── Conventional.py <- file to run for identifying objects and there features using conventional methods
 ├── DeepLearning.py <- file to run for identifying objects and there features using deep learning
