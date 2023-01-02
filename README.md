@@ -102,4 +102,4 @@ $ python ./DeepLearning.py
 
 Depending on your preference. 
 
-**NOTE**: We expect you to run these commands home dir of the repo.
+**NOTE**: We expect you to run these commands in the home dir of the repo.
