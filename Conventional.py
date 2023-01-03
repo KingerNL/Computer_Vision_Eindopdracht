@@ -44,7 +44,7 @@ output_dir  = None # later defined
 lower_color = (10,     20,      35)
 upper_color = (30,     200,     180)
 
-# how big the smallest area should be, the other ones get filtered away.
+# how big the smallest area should be, the other ones get filtered.
 filter_contour_area = 900
 
 # how big the kernel should be for the dilation / erosion.
@@ -104,7 +104,7 @@ for img in images:
             
             # -=- add to list -=- #
             item = object(contour, identified_item, (cX, cY), angle, color)
-            img.add_contour(item.outline)
+            img.add_contour(item)
             # img.contours = lijst aan contouren -> img.contours = lijst aan objects
 
     print("found", len(img.contours), "contours in", img.name)
@@ -112,19 +112,11 @@ for img in images:
     # -=-=- draw contours and put text -=-=- #
     # to make a specific contour, use cnt = contours[1], and cnt as a var (instead of img.contours)
     
-    cv.drawContours(img.cv_image, img.contours, -1, (255,0,255), 3)
-    
     for contour in range(len(img.contours)):
         
-        M = cv.moments(img.contours[contour])
-
-        cX = int(M['m10'] / M['m00'])
-        cY = int(M['m01'] / M['m00'])
+        cv.drawContours(img.cv_image, img.contours[contour].outline, -1, (255,0,255), 3)
         
-        # TODO: Change to which object we need to indentify
-        text = "object"
-        
-        cv.putText(img.cv_image, text, (cX, cY), cv.FONT_HERSHEY_SIMPLEX, 1.2, (255, 0, 255), 3)
+        cv.putText(img.cv_image, img.contours[contour].kind_of_object, img.contours[contour].position, cv.FONT_HERSHEY_SIMPLEX, 1.2, (255, 0, 255), 3)
     
     # -=-=- save image -=-=- #
     output_dir  = os.path.join(root_dir,'output_conventional', img.name)
