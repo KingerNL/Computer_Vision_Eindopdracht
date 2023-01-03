@@ -1,8 +1,10 @@
+# This document isn't written in PEP8, will try and change this to a later date.
 # -=-=-=- IMPORT LIBRARY'S -=-=-=- #
 import numpy as np
 import cv2 as cv
 import os
 import glob
+from typing import List
 
 # -=-=-=-=- CLASSES -=-=-=-=- #
 
@@ -35,7 +37,7 @@ def find_color(contour, original_image) -> str:
 # -=-=-=- VARIABLES -=-=-=- #
 
 # Folder variables
-images      = []
+images: List[image]  = []
 root_dir    = os.path.abspath("./")
 input_dir   = os.path.join(root_dir,'input_conventional','*.jpg')
 output_dir  = None # later defined 
@@ -50,12 +52,13 @@ filter_contour_area = 900
 # how big the kernel should be for the dilation / erosion.
 kernel = np.ones((4, 4), np.uint8)
 
-# pre-defined colors
+# pre-defined colors & min rmse
 white  = np.array(["red",    (255,255,255)], dtype=object)
 black  = np.array(["black",  (0, 0, 0)],     dtype=object)
 pink   = np.array(["pink",   (300, 90 ,53)], dtype=object)
 metal  = np.array(["metal",  (0, 67 ,67)],   dtype=object)
-colors = (white, black, pink, metal)
+colors = np.array([white, black, pink, metal])
+min_rmse = 1000000
 
 # -=-=-=- READ IMAGES  -=-=-=- #
 
@@ -75,12 +78,12 @@ for img in images:
     mask = cv.inRange(hsv_image, lower_color, upper_color)
     mask = cv.bitwise_not(mask)
     
-    mask = cv.erode(mask, kernel, iterations=1)
-    mask = cv.erode(mask, kernel, iterations=1)
+    cv.erode(mask, kernel, iterations=1)
+    cv.erode(mask, kernel, iterations=1)
 
-    mask = cv.dilate(mask, kernel, iterations=1)
-    mask = cv.dilate(mask, kernel, iterations=1)
-    mask = cv.dilate(mask, kernel, iterations=1)
+    cv.dilate(mask, kernel, iterations=1)
+    cv.dilate(mask, kernel, iterations=1)
+    cv.dilate(mask, kernel, iterations=1)
     
     # -=-=- FIND CONTOURS -=-=- #
     contours, hierarchy = cv.findContours(mask, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_NONE)
@@ -97,25 +100,21 @@ for img in images:
             (x,y),(MA,ma),angle = cv.fitEllipse(contour)
             
             # -=- find closest color -=- #
-            color = find_color(contour, img)
+            color = find_color(img.cv_image , contour)
             
             # -=- find kind of object -=- #
-            identified_item = find_object(contour, img)
+            identified_item = find_object(img.cv_image, contour)
             
             # -=- add to list -=- #
             item = object(contour, identified_item, (cX, cY), angle, color)
             img.add_contour(item)
-            # img.contours = lijst aan contouren -> img.contours = lijst aan objects
 
     # print("found", len(img.contours), "contours in", img.name)
 
-    # -=-=- draw contours and put text -=-=- #
-    # to make a specific contour, use cnt = contours[1], and cnt as a var (instead of img.contours)
-    
+    # -=-=- draw contours and put text -=-=- #    
     for contour in range(len(img.contours)):
-        
+        # to make a specific contour, use cnt = contours[1], and cnt as a var (instead of img.contours)
         cv.drawContours(img.cv_image, img.contours[contour].outline, -1, (255,0,255), 3)
-        
         cv.putText(img.cv_image, img.contours[contour].kind_of_object, img.contours[contour].position, cv.FONT_HERSHEY_SIMPLEX, 1.2, (255, 0, 255), 3)
     
     # -=-=- save image -=-=- #
