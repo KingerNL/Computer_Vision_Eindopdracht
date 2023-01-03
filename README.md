@@ -12,7 +12,7 @@
 ## Introduction <a name = "introduction"></a>
 The idea of this project is to identify these objects using regular (conventional) image processing algorithms, and identify the objects using deep learning. To see the advantages and disadvantages of both.
 
-![image of all parts](./test_images_val/val_image.jpg)
+![image of all parts](./image_objects_ordered/val_image.jpg)
 
 As you can see there are 19 different objects we need to identify. We chose for 5 classes with the following information per class. 
 
@@ -55,25 +55,26 @@ if there are any problems please open a ticket or send me a message *(The requir
 ## General Layout <a name = "general_layout"></a>
 
 ```bash
-├── input_conventional <- here are the input images for conventional image processing
-│   ├── img_1.jpg
-│   ├── ...
-├── output_conventional <- these are the output images for conventional image processing
-│   ├── img_1.jpg
-│   ├── ...
-├── test_images_1 <- dataset shoot 1
-│   ├── img_1.jpg
-│   ├── ...
-├── test_images_2 <- dataset shoot 2
-│   ├── img_1.jpg
-│   ├── ...
-├── test_images_crossed <- dataset shoot 1 (crossed)
-│   ├── img_1.jpg
-│   ├── ...
-├── test_images_val <- just an image for the README.md (can be used for validation)
+├── conventional
+│   ├── input_conventional <- here are the input images for conventional image processing
+│   │   ├── img_1.jpg
+│   │   ├── ...
+│   ├── output_conventional <- these are the output images for conventional image processing
+│   │   ├── img_1.jpg
+│   │   ├── ...
+│   ├── Conventional.py <- file to run for identifying objects and there features using conventional methods
+│
+├── deep_learning
+│   ├── dataset <- our dataset (roughly 450 images)
+│   │   ├── img_1.jpg
+│   │   ├── img_2.jpg
+│   │   ├── ...
+│   │   
+│   ├── DeepLearning.py <- file to run for identifying objects and there features using deep learning
+│
+├── image_objects_ordered <- just an image for the README.md (can be used for validation)
 │   ├── val_image.jpg
-├── Conventional.py <- file to run for identifying objects and there features using conventional methods
-├── DeepLearning.py <- file to run for identifying objects and there features using deep learning
+│
 ├── README.md
 └── requirements.txt
 ```
