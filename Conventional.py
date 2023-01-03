@@ -27,7 +27,7 @@ class object():
 # -=-=-=-=- DECLARE FUNCTIONS -=-=-=-=- #
 
 def find_object(contour, original_image) -> str:
-    return "nut"
+    return "object"
 
 def find_color(contour, original_image) -> str:
     return "color"
@@ -107,7 +107,7 @@ for img in images:
             img.add_contour(item)
             # img.contours = lijst aan contouren -> img.contours = lijst aan objects
 
-    print("found", len(img.contours), "contours in", img.name)
+    # print("found", len(img.contours), "contours in", img.name)
 
     # -=-=- draw contours and put text -=-=- #
     # to make a specific contour, use cnt = contours[1], and cnt as a var (instead of img.contours)
@@ -121,3 +121,5 @@ for img in images:
     # -=-=- save image -=-=- #
     output_dir  = os.path.join(root_dir,'output_conventional', img.name)
     cv.imwrite(output_dir, img.cv_image)
+
+print("done!")
