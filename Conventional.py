@@ -5,6 +5,7 @@ import cv2 as cv
 import os
 import glob
 from typing import List
+from math import pi
 
 # -=-=-=-=- CLASSES -=-=-=-=- #
 
@@ -28,10 +29,22 @@ class object():
 
 # -=-=-=-=- DECLARE FUNCTIONS -=-=-=-=- #
 
-def find_object(contour, original_image) -> str:
-    return "object"
+def roundness(contour, moments) -> float:
+    length = cv.arcLength(contour, True)
+    k = (length * length) / (moments['m00'] * 4 * pi)
+    # print(k)
+    return k
+
+def find_object(contour, moment) -> str:
+    k_value = roundness(contour, moment)
+    if k_value < 3:
+        chosen_object = 'ring'
+    else:
+        chosen_object = 'object'
+    return chosen_object
 
 def find_color(contour, original_image) -> str:
+    # TODO: Check mean color and compare to pre defined colors
     return "color"
 
 # -=-=-=- VARIABLES -=-=-=- #
@@ -103,19 +116,19 @@ for img in images:
             color = find_color(img.cv_image , contour)
             
             # -=- find kind of object -=- #
-            identified_item = find_object(img.cv_image, contour)
+            identified_item = find_object(contour, M)
             
             # -=- add to list -=- #
             item = object(contour, identified_item, (cX, cY), angle, color)
             img.add_contour(item)
 
-    # print("found", len(img.contours), "contours in", img.name)
+    print("found", len(img.contours), "contours in", img.name)
 
     # -=-=- draw contours and put text -=-=- #    
     for contour in range(len(img.contours)):
         # to make a specific contour, use cnt = contours[1], and cnt as a var (instead of img.contours)
         cv.drawContours(img.cv_image, img.contours[contour].outline, -1, (255,0,255), 3)
-        cv.putText(img.cv_image, img.contours[contour].kind_of_object, img.contours[contour].position, cv.FONT_HERSHEY_SIMPLEX, 1.2, (255, 0, 255), 3)
+        cv.putText(img.cv_image, img.contours[contour].kind_of_object, img.contours[contour].position, cv.FONT_HERSHEY_SIMPLEX, 1.2, (255, 255, 255), 4)
     
     # -=-=- save image -=-=- #
     output_dir  = os.path.join(root_dir,'output_conventional', img.name)
