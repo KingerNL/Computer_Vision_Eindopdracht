@@ -66,7 +66,7 @@ if there are any problems please open a ticket or send me a message *(The requir
 │   ├── output_data.csv <- output file where you can find data of every contour in the images
 │
 ├── deep_learning
-│   ├── dataset <- our dataset (roughly 450 images)
+│   ├── dataset <- our dataset (250 images)
 │   │   ├── img_1.jpg
 │   │   ├── img_2.jpg
 │   │   ├── ...
