@@ -6,7 +6,7 @@ import os
 import glob
 import csv
 from typing import List
-from math import pi
+from math import pi, sqrt
 
 # -=-=-=-=- CLASSES -=-=-=-=- #
 
@@ -28,26 +28,6 @@ class object():
         self.oriëntation    = oriëntation
         self.outline        = outline
 
-# -=-=-=-=- DECLARE FUNCTIONS -=-=-=-=- #
-
-def roundness(contour, moments) -> float:
-    length = cv.arcLength(contour, True)
-    k = (length * length) / (moments['m00'] * 4 * pi)
-    # print(k)
-    return k
-
-def find_object(contour, moment) -> str:
-    k_value = roundness(contour, moment)
-    if k_value < 3:
-        chosen_object = 'ring'
-    else:
-        chosen_object = 'unknown_object'
-    return chosen_object
-
-def find_color(contour, original_image) -> str:
-    # TODO: Check mean color and compare to pre defined colors
-    return "unknown_color"
-
 # -=-=-=- VARIABLES -=-=-=- #
 
 # Folder variables
@@ -66,13 +46,57 @@ filter_contour_area = 900
 # how big the kernel should be for the dilation / erosion.
 kernel = np.ones((4, 4), np.uint8)
 
-# pre-defined colors & min rmse
-white  = np.array(["red",    (255,255,255)], dtype=object)
-black  = np.array(["black",  (0, 0, 0)],     dtype=object)
-pink   = np.array(["pink",   (300, 90 ,53)], dtype=object)
-metal  = np.array(["metal",  (0, 67 ,67)],   dtype=object)
-colors = np.array([white, black, pink, metal])
-min_rmse = 1000000
+# pre-defined colors (BGR)
+#TODO: Check if color value's correspont. Or change the heuristic.
+white: np.ndarray  = np.array(["white",  (210,210,210)], dtype=object)
+black: np.ndarray  = np.array(["black",  (30, 30, 30)],     dtype=object)
+pink: np.ndarray   = np.array(["pink",   (120, 90 , 220)], dtype=object)
+metal: np.ndarray  = np.array(["metal",  (120, 120 ,120)],   dtype=object)
+colors: list = (white, black, pink, metal)
+
+# -=-=-=-=- DECLARE FUNCTIONS -=-=-=-=- #
+
+def roundness(contour, moments) -> float:
+    length = cv.arcLength(contour, True)
+    k = (length * length) / (moments['m00'] * 4 * pi)
+    return k
+
+def find_object(contour, moment) -> str:
+    k_value = roundness(contour, moment)
+    if k_value < 3:
+        chosen_object = 'ring'
+    else:
+        chosen_object = 'unknown_object'
+    return chosen_object
+
+def find_color(contour, original_image) -> str:
+    
+    mask = np.zeros(original_image.shape[:2], np.uint8)
+    cv.drawContours(mask, contour, -1, 255, -1)
+    # cv.imshow('yo', mask)
+    # cv.waitKey()
+    
+    # mean returned: BGR = Blue, Green, Red
+    mean = cv.mean(original_image, mask=mask)[0:3]
+    # print(mean)
+    min_rmse = 1000000
+    # print(mean)
+    for color in colors:
+        bb = color[1][0]
+        gg = color[1][1]
+        rr = color[1][2]
+        rmse = sqrt( ( (mean[2]-rr)*(mean[2]-rr) + (mean[1]-gg)*(mean[1]-gg) + (mean[0]-bb)*(mean[0]-bb) )/3 )
+        colorname = color[0]
+        # print(colorname,rmse)
+        if rmse < min_rmse:
+            min_rmse = rmse
+            match_color = color[0]
+    
+    # print("")
+    # print("match_color:", match_color)
+    # print("rmse:", min_rmse)
+    # print("")
+    return match_color
 
 # -=-=-=- READ IMAGES  -=-=-=- #
 
@@ -114,7 +138,7 @@ for img in images:
             (x,y),(MA,ma),angle = cv.fitEllipse(contour)
             
             # -=- find closest color -=- #
-            color = find_color(img.cv_image , contour)
+            color = find_color(contour, img.cv_image)
             
             # -=- find kind of object -=- #
             identified_item = find_object(contour, M)
@@ -123,13 +147,27 @@ for img in images:
             item = object(contour, identified_item, (cX, cY), angle, color)
             img.add_contour(item)
 
-    # print("found", len(img.contours), "contours in", img.name)
+    print("found", len(img.contours), "contours in", img.name)
 
     # -=-=- draw contours and put text -=-=- #    
     for contour in range(len(img.contours)):
-        # to make a specific contour, use cnt = contours[1], and cnt as a var (instead of img.contours)
-        cv.drawContours(img.cv_image, img.contours[contour].outline, -1, (255,0,255), 3)
-        cv.putText(img.cv_image, img.contours[contour].kind_of_object, img.contours[contour].position, cv.FONT_HERSHEY_SIMPLEX, 1.2, (255, 255, 255), 4)
+        if img.contours[contour].color == 'white':
+            color = white[1]
+        elif img.contours[contour].color == 'black':
+            color = black[1]
+        elif img.contours[contour].color == 'pink':
+            color = pink[1]
+        else:
+            color = metal[1]
+
+        cv.drawContours(img.cv_image, img.contours[contour].outline, -1, color, 3)
+        
+        if img.contours[contour].color == 'black':
+            color = white[1]
+        else:
+            color = black[1]
+        
+        cv.putText(img.cv_image, img.contours[contour].kind_of_object, img.contours[contour].position, cv.FONT_HERSHEY_SIMPLEX, 1.2, color, 4)
     
     # -=-=- save image -=-=- #
     output_dir  = os.path.join(root_dir,'output_conventional', img.name)
