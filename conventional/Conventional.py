@@ -78,7 +78,6 @@ def find_color(contour, original_image) -> str:
     
     # mean returned: BGR = Blue, Green, Red
     mean = cv.mean(original_image, mask=mask)[0:3]
-    # print(mean)
     min_rmse = 1000000
     # print(mean)
     for color in colors:
