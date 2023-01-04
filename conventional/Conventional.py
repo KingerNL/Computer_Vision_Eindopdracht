@@ -8,6 +8,9 @@ import csv
 from typing import List
 from math import pi, sqrt
 
+f = open('../image_objects_ordered/coding.txt', 'r')
+print(''.join([line for line in f]))
+print('starting...')
 # -=-=-=-=- CLASSES -=-=-=-=- #
 
 class image():
@@ -146,7 +149,7 @@ for img in images:
             item = object(contour, identified_item, (cX, cY), angle, color)
             img.add_contour(item)
 
-    print("found", len(img.contours), "contours in", img.name)
+    print("found", len(img.contours), "contour(s) in:", img.name)
 
     # -=-=- draw contours and put text -=-=- #    
     for contour in range(len(img.contours)):
@@ -178,4 +181,4 @@ for img in images:
     #     for contour in range(len(img.contours)):
     #         csv_writer.writerow((img.name, img.contours[contour].kind_of_object, img.contours[contour].position, img.contours[contour].oriëntation, img.contours[contour].color))
             
-print("done!")
+print("done! data saved to: output_data.csv")
