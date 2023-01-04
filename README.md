@@ -63,6 +63,7 @@ if there are any problems please open a ticket or send me a message *(The requir
 │   │   ├── img_1.jpg
 │   │   ├── ...
 │   ├── Conventional.py <- file to run for identifying objects and there features using conventional methods
+│   ├── output_data.csv <- output file where you can find data of every contour in the images
 │
 ├── deep_learning
 │   ├── dataset <- our dataset (roughly 450 images)

@@ -4,6 +4,7 @@ import numpy as np
 import cv2 as cv
 import os
 import glob
+import csv
 from typing import List
 from math import pi
 
@@ -40,12 +41,12 @@ def find_object(contour, moment) -> str:
     if k_value < 3:
         chosen_object = 'ring'
     else:
-        chosen_object = 'object'
+        chosen_object = 'unknown_object'
     return chosen_object
 
 def find_color(contour, original_image) -> str:
     # TODO: Check mean color and compare to pre defined colors
-    return "color"
+    return "unknown_color"
 
 # -=-=-=- VARIABLES -=-=-=- #
 
@@ -133,5 +134,13 @@ for img in images:
     # -=-=- save image -=-=- #
     output_dir  = os.path.join(root_dir,'output_conventional', img.name)
     cv.imwrite(output_dir, img.cv_image)
+    
+    # -=-=- save data to csv -=-=- #
+    # with open('./output_data.csv', 'a', encoding='UTF8', newline='') as csv_file:
+    #     csv_writer = csv.writer(csv_file)
+    #     for contour in range(len(img.contours)):
+    #         csv_writer.writerow((img.name, img.contours[contour].kind_of_object, img.contours[contour].position, img.contours[contour].oriëntation, img.contours[contour].color))
+            
+        
 
 print("done!")
