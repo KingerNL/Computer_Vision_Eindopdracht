@@ -123,7 +123,7 @@ for img in images:
             item = object(contour, identified_item, (cX, cY), angle, color)
             img.add_contour(item)
 
-    print("found", len(img.contours), "contours in", img.name)
+    # print("found", len(img.contours), "contours in", img.name)
 
     # -=-=- draw contours and put text -=-=- #    
     for contour in range(len(img.contours)):
