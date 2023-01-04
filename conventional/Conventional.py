@@ -48,10 +48,10 @@ kernel = np.ones((4, 4), np.uint8)
 
 # pre-defined colors (BGR)
 #TODO: Check if color value's correspont. Or change the heuristic.
-white: np.ndarray  = np.array(["white",  (210,210,210)], dtype=object)
-black: np.ndarray  = np.array(["black",  (30, 30, 30)],     dtype=object)
+white: np.ndarray  = np.array(["white",  (210,210,210)],   dtype=object)
+black: np.ndarray  = np.array(["black",  (30, 30, 30)],    dtype=object)
 pink: np.ndarray   = np.array(["pink",   (120, 90 , 220)], dtype=object)
-metal: np.ndarray  = np.array(["metal",  (120, 120 ,120)],   dtype=object)
+metal: np.ndarray  = np.array(["metal",  (120, 120 ,120)], dtype=object)
 colors: list = (white, black, pink, metal)
 
 # -=-=-=-=- DECLARE FUNCTIONS -=-=-=-=- #
@@ -179,6 +179,4 @@ for img in images:
     #     for contour in range(len(img.contours)):
     #         csv_writer.writerow((img.name, img.contours[contour].kind_of_object, img.contours[contour].position, img.contours[contour].oriëntation, img.contours[contour].color))
             
-        
-
 print("done!")
