@@ -53,7 +53,7 @@ filter_contour_area = 900
 kernel = np.ones((4, 4), np.uint8)
 
 # pre-defined colors (BGR)
-#TODO: Check if color value's correspont. Or change the heuristic.
+#TODO: Check if color value's corresponts. Or change the heuristic.
 white: np.ndarray  = np.array(["white",  (210,210,210)],   dtype=object)
 black: np.ndarray  = np.array(["black",  (30, 30, 30)],    dtype=object)
 pink: np.ndarray   = np.array(["pink",   (120, 90 , 220)], dtype=object)
@@ -67,6 +67,7 @@ def roundness(contour, moments) -> float:
     k = (length * length) / (moments['m00'] * 4 * pi)
     return k
 
+# TODO: Find ways to detect the other objects
 def find_object(contour, moment) -> str:
     k_value = roundness(contour, moment)
     if k_value < 3:
@@ -79,8 +80,6 @@ def find_color(contour, original_image) -> str:
     
     mask = np.zeros(original_image.shape[:2], np.uint8)
     cv.drawContours(mask, contour, -1, 255, -1)
-    # cv.imshow('yo', mask)
-    # cv.waitKey()
     
     # mean returned: BGR = Blue, Green, Red
     mean = cv.mean(original_image, mask=mask)[0:3]
