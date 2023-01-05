@@ -1,9 +1,5 @@
 # A model for classifying Nuts, Bolts & more...
 
-<p align="center">
-    <img src="./image_objects_ordered/readme_image.jpg" alt="intro image" />
-</p>
-
 ## Table of Contents
 
 + [Introduction](#introduction)
