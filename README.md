@@ -66,16 +66,30 @@ if there are any problems please open a ticket or send me a message *(The requir
 │   ├── output_data.csv <- output file where you can find data of every contour in the images
 │
 ├── deep_learning
-│   ├── dataset <- our dataset (250 images)
+│   ├── output <- our output folder, currently occupied with a placeholder
 │   │   ├── img_1.jpg
-│   │   ├── img_2.jpg
+│   │   ├── ...
+│   ├── test <- folder with files to test our alghoritm
+│   │   ├── img_1.jpg
+│   │   ├── ...
+│   ├── train <- training folder, here should be the bulk of our images
+│   │   ├── img_1.jpg
+│   │   ├── ...
+│   ├── valid <- map for validation
+│   │   ├── img_1.jpg
 │   │   ├── ...
 │   │   
-│   ├── DeepLearning.py <- file to run for identifying objects and there features using deep learning
+│   ├── classification.py <- ...
+│   ├── custom_config_detectron.py <- the custom configuration file
+│   ├── environment.yml <- .yml file for the environment
+│   ├── predicting.py <- file to run for identifying objects and there features using detectron2
+│   ├── training.py <- the training file
 │
 ├── image_objects_ordered <- just an image for the README.md (can be used for validation)
 │   ├── val_image.jpg
+│   ├── conding.txt
 │
+├── .gitignore
 ├── README.md
 └── requirements.txt
 ```
