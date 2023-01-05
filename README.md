@@ -1,6 +1,8 @@
 # A model for classifying Nuts, Bolts & more...
 
-![image of all parts](./image_objects_ordered/readme_image.png)
+<p align="center">
+![intro image](./image_objects_ordered/readme_image.jpg)
+</p>
 
 ## Table of Contents
 
