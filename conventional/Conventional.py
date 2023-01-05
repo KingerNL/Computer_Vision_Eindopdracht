@@ -178,9 +178,9 @@ for img in images:
     cv.imwrite(output_dir, img.cv_image)
     
     # -=-=- save data to csv -=-=- #
-    with open('./output_data.csv', 'a', encoding='UTF8', newline='') as csv_file:
-        csv_writer = csv.writer(csv_file)
-        for contour in range(len(img.contours)):
-            csv_writer.writerow((img.name, img.contours[contour].kind_of_object, 1, img.contours[contour].position, img.contours[contour].oriëntation, img.contours[contour].color))
+    # with open('./output_data.csv', 'a', encoding='UTF8', newline='') as csv_file:
+    #     csv_writer = csv.writer(csv_file)
+    #     for contour in range(len(img.contours)):
+    #         csv_writer.writerow((img.name, img.contours[contour].kind_of_object, 1, img.contours[contour].position, img.contours[contour].oriëntation, img.contours[contour].color))
             
 print("done! data saved to: output_data.csv")

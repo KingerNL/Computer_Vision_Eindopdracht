@@ -1,5 +1,7 @@
 # A model for classifying Nuts, Bolts & more...
 
+![image of all parts](./image_objects_ordered/readme_image.png)
+
 ## Table of Contents
 
 + [Introduction](#introduction)
@@ -87,6 +89,7 @@ if there are any problems please open a ticket or send me a message *(The requir
 │
 ├── image_objects_ordered <- just an image for the README.md (can be used for validation)
 │   ├── val_image.jpg
+│   ├── readme_image.png
 │   ├── conding.txt
 │
 ├── .gitignore
