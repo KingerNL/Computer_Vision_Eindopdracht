@@ -42,10 +42,11 @@ root_dir    = os.path.abspath("./")
 input_dir   = os.path.join(root_dir,'input_conventional','*.jpg')
 output_dir  = None # later defined 
 
-#             Hue, Saturation, Value
-lower_color = (10,     20,      35)
-upper_color = (30,     200,     180)
-
+#                        Hue, Saturation, Value
+lower_background_color = (10,     20,      35)
+upper_background_color = (30,     200,     170)
+lower_blue             = (80,     120,     20)
+upper_blue             = (100,    255,     255)
 # how big the smallest area should be, the other ones get filtered.
 filter_contour_area = 900
 
@@ -54,10 +55,11 @@ kernel = np.ones((4, 4), np.uint8)
 
 # pre-defined colors (BGR)
 #TODO: Check if color value's corresponts. Or change the heuristic.
-white: np.ndarray  = np.array(["white",  (210,210,210)],   dtype=object)
-black: np.ndarray  = np.array(["black",  (30, 30, 30)],    dtype=object)
-pink: np.ndarray   = np.array(["pink",   (120, 90 , 220)], dtype=object)
-metal: np.ndarray  = np.array(["metal",  (120, 120 ,120)], dtype=object)
+white: np.ndarray  = np.array(["white",  (210,210 ,210 )],   dtype=object)
+black: np.ndarray  = np.array(["black",  (30, 30  , 30 )],    dtype=object)
+pink:  np.ndarray  = np.array(["pink",   (120, 90 , 220)], dtype=object)
+metal: np.ndarray  = np.array(["metal",  (120, 120,120 )], dtype=object)
+blue:  np.ndarray  = np.array(["blue",   (255  , 100  ,10 )],  dtype=object)
 colors: list = (white, black, pink, metal)
 
 # -=-=-=-=- DECLARE FUNCTIONS -=-=-=-=- #
@@ -68,13 +70,21 @@ def roundness(contour, moments) -> float:
     return k
 
 # TODO: Find ways to detect the other objects
-def find_object(contour, moment) -> str:
+def find_object(contour, moment, mask) -> str:
     k_value = roundness(contour, moment)
-    if k_value < 3:
-        chosen_object = 'ring'
+    
+    blue_mask = np.zeros(mask.shape[:2], dtype="uint8")
+    cv.drawContours(blue_mask, [contour], -1, 255, -1)
+    individual_masks = cv.bitwise_and(mask, mask, mask = blue_mask)
+    blue_mask = cv.inRange(individual_masks, lower_blue, upper_blue)
+    
+    # print(np.mean(blue_mask))
+    if np.mean(blue_mask) > 0:
+        return 'check valve'
+    elif k_value < 2.5:
+        return 'ring'
     else:
-        chosen_object = 'unknown_object'
-    return chosen_object
+        return '?'
 
 def find_color(contour, original_image) -> str:
     
@@ -116,20 +126,22 @@ for img in images:
     # set image in hue color space
     hsv_image = cv.cvtColor(img.cv_image, cv.COLOR_BGR2HSV)
     
+    # filter image on HSV color ranges
+    mask = cv.inRange(hsv_image, lower_background_color, upper_background_color)
     # erode / dilate images for better quality masks
-    mask = cv.inRange(hsv_image, lower_color, upper_color)
-    mask = cv.bitwise_not(mask)
-    
-    cv.erode(mask, kernel, iterations=1)
-    cv.erode(mask, kernel, iterations=1)
+    mask_binary = cv.bitwise_not(mask)
+    mask_with_color = cv.bitwise_and(hsv_image, img.cv_image, mask = mask_binary)
 
-    cv.dilate(mask, kernel, iterations=1)
-    cv.dilate(mask, kernel, iterations=1)
-    cv.dilate(mask, kernel, iterations=1)
-    
+    cv.erode(mask_binary, kernel, iterations=1)
+    cv.erode(mask_binary, kernel, iterations=1)
+
+    cv.dilate(mask_binary, kernel, iterations=1)
+    cv.dilate(mask_binary, kernel, iterations=1)
+    cv.dilate(mask_binary, kernel, iterations=1)
+
     # -=-=- FIND CONTOURS -=-=- #
-    contours, hierarchy = cv.findContours(mask, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_NONE)
-    
+    contours, hierarchy = cv.findContours(mask_binary, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_NONE)
+
     # -=- filter and add information to contours -=- #
     for contour in contours:
         if (cv.contourArea(contour) > filter_contour_area):
@@ -140,12 +152,12 @@ for img in images:
 
             # -=- find oriëntation -=- #
             (x,y),(MA,ma),angle = cv.fitEllipse(contour)
-            
+
             # -=- find closest color -=- #
             color = find_color(contour, img.cv_image)
             
             # -=- find kind of object -=- #
-            identified_item = find_object(contour, M)
+            identified_item = find_object(contour, M, mask_with_color)
             
             # -=- add to list -=- #
             item = object(contour, identified_item, (cX, cY), angle, color)
@@ -155,7 +167,9 @@ for img in images:
 
     # -=-=- draw contours and put text -=-=- #    
     for contour in range(len(img.contours)):
-        if img.contours[contour].color == 'white':
+        if img.contours[contour].kind_of_object == 'check valve':
+            color = blue[1]
+        elif img.contours[contour].color == 'white':
             color = white[1]
         elif img.contours[contour].color == 'black':
             color = black[1]
@@ -178,9 +192,9 @@ for img in images:
     cv.imwrite(output_dir, img.cv_image)
     
     # -=-=- save data to csv -=-=- #
-    # with open('./output_data.csv', 'a', encoding='UTF8', newline='') as csv_file:
-    #     csv_writer = csv.writer(csv_file)
-    #     for contour in range(len(img.contours)):
-    #         csv_writer.writerow((img.name, img.contours[contour].kind_of_object, 1, img.contours[contour].position, img.contours[contour].oriëntation, img.contours[contour].color))
+    with open('./output_data.csv', 'a', encoding='UTF8', newline='') as csv_file:
+        csv_writer = csv.writer(csv_file)
+        for contour in range(len(img.contours)):
+            csv_writer.writerow((img.name, img.contours[contour].kind_of_object, 1, img.contours[contour].position, img.contours[contour].oriëntation, img.contours[contour].color))
             
 print("done! data saved to: output_data.csv")

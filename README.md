@@ -73,6 +73,7 @@ if there are any problems please open a ticket or send me a message *(The requir
 │   │   ├── img_1.jpg
 │   │   ├── ...
 │   ├── train <- training folder, here should be the bulk of our images
+│   │   ├── annotations.json <- has annotations for our project. can be opened with vgg image annotator 
 │   │   ├── img_1.jpg
 │   │   ├── ...
 │   ├── valid <- map for validation
