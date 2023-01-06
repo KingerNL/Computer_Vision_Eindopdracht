@@ -55,11 +55,11 @@ kernel = np.ones((4, 4), np.uint8)
 
 # pre-defined colors (BGR)
 #TODO: Check if color value's corresponts. Or change the heuristic.
-white: np.ndarray  = np.array(["white",  (210,210 ,210 )],   dtype=object)
-black: np.ndarray  = np.array(["black",  (30, 30  , 30 )],    dtype=object)
-pink:  np.ndarray  = np.array(["pink",   (120, 90 , 220)], dtype=object)
-metal: np.ndarray  = np.array(["metal",  (120, 120,120 )], dtype=object)
-blue:  np.ndarray  = np.array(["blue",   (255  , 100  ,10 )],  dtype=object)
+white: np.ndarray  = np.array(["white",  (210, 210, 210)],   dtype=object)
+black: np.ndarray  = np.array(["black",  (30,  30,  30 )],    dtype=object)
+pink:  np.ndarray  = np.array(["pink",   (120, 90,  220)], dtype=object)
+metal: np.ndarray  = np.array(["metal",  (120, 120, 120)], dtype=object)
+blue:  np.ndarray  = np.array(["blue",   (255, 100 ,10 )],  dtype=object)
 colors: list = (white, black, pink, metal)
 
 # -=-=-=-=- DECLARE FUNCTIONS -=-=-=-=- #
@@ -78,7 +78,6 @@ def find_object(contour, moment, mask) -> str:
     individual_masks = cv.bitwise_and(mask, mask, mask = blue_mask)
     blue_mask = cv.inRange(individual_masks, lower_blue, upper_blue)
     
-    # print(np.mean(blue_mask))
     if np.mean(blue_mask) > 0:
         return 'check valve'
     elif k_value < 2.5:
@@ -128,6 +127,7 @@ for img in images:
     
     # filter image on HSV color ranges
     mask = cv.inRange(hsv_image, lower_background_color, upper_background_color)
+    
     # erode / dilate images for better quality masks
     mask_binary = cv.bitwise_not(mask)
     mask_with_color = cv.bitwise_and(hsv_image, img.cv_image, mask = mask_binary)
