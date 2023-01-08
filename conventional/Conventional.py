@@ -169,23 +169,30 @@ for img in images:
     for contour in range(len(img.contours)):
         if img.contours[contour].kind_of_object == 'check valve':
             color = blue[1]
+            text_color = black[1]
         elif img.contours[contour].color == 'white':
             color = white[1]
+            text_color = black[1]
         elif img.contours[contour].color == 'black':
             color = black[1]
+            text_color = white[1]
         elif img.contours[contour].color == 'pink':
+            text_color = black[1]
             color = pink[1]
         else:
+            text_color = black[1]
             color = metal[1]
 
-        cv.drawContours(img.cv_image, img.contours[contour].outline, -1, color, 3)
+
+        # -=-=- Draw bounding box with text -=-=- #
+        x,y,w,h = cv.boundingRect(img.contours[contour].outline)
+        cv.rectangle(img.cv_image, (x,y), (x+w,y+h), color, 3)
+        cv.putText(img.cv_image, img.contours[contour].kind_of_object, (x, y-10), cv.FONT_HERSHEY_SIMPLEX, 1.2, text_color, 4)
+
+        # -=-=- Draw contour with text -=-=- #
+        # cv.drawContours(img.cv_image, img.contours[contour].outline, -1, color, 2)
+        # cv.putText(img.cv_image, img.contours[contour].kind_of_object, img.contours[contour].position, cv.FONT_HERSHEY_SIMPLEX, 1.2, text_color, 4)
         
-        if img.contours[contour].color == 'black':
-            color = white[1]
-        else:
-            color = black[1]
-        
-        cv.putText(img.cv_image, img.contours[contour].kind_of_object, img.contours[contour].position, cv.FONT_HERSHEY_SIMPLEX, 1.2, color, 4)
     
     # -=-=- save image -=-=- #
     output_dir  = os.path.join(root_dir,'output_conventional', img.name)
