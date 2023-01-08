@@ -99,7 +99,7 @@ def find_color(contour, original_image) -> str:
         gg = color[1][1]
         rr = color[1][2]
         rmse = sqrt( ( (mean[2]-rr)*(mean[2]-rr) + (mean[1]-gg)*(mean[1]-gg) + (mean[0]-bb)*(mean[0]-bb) )/3 )
-        colorname = color[0]
+        # colorname = color[0]
         # print(colorname,rmse)
         if rmse < min_rmse:
             min_rmse = rmse
@@ -168,14 +168,14 @@ for img in images:
     # -=-=- draw contours and put text -=-=- #    
     for contour in range(len(img.contours)):
         if img.contours[contour].kind_of_object == 'check valve':
+            text_color = black[1]
             color = blue[1]
-            text_color = black[1]
         elif img.contours[contour].color == 'white':
-            color = white[1]
             text_color = black[1]
+            color = white[1]
         elif img.contours[contour].color == 'black':
-            color = black[1]
             text_color = white[1]
+            color = black[1]
         elif img.contours[contour].color == 'pink':
             text_color = black[1]
             color = pink[1]
