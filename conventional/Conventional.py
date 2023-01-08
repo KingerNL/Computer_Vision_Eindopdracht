@@ -47,6 +47,7 @@ lower_background_color = (10,     20,      35)
 upper_background_color = (30,     200,     170)
 lower_blue             = (80,     120,     20)
 upper_blue             = (100,    255,     255)
+
 # how big the smallest area should be, the other ones get filtered.
 filter_contour_area = 900
 
