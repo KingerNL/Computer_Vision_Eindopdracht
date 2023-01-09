@@ -43,7 +43,7 @@ input_dir   = os.path.join(root_dir,'input_conventional','*.jpg')
 output_dir  = None # later defined 
 
 #                        Hue, Saturation, Value
-lower_background_color = (20,     50,      20)
+lower_background_color = (20,     20,      20)
 upper_background_color = (35,     255,     255)
 lower_blue             = (80,     120,     20)
 upper_blue             = (100,    255,     255)
