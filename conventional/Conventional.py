@@ -43,8 +43,8 @@ input_dir   = os.path.join(root_dir,'input_conventional','*.jpg')
 output_dir  = None # later defined 
 
 #                        Hue, Saturation, Value
-lower_background_color = (10,     20,      35)
-upper_background_color = (30,     200,     170)
+lower_background_color = (20,     50,      20)
+upper_background_color = (35,     255,     255)
 lower_blue             = (80,     120,     20)
 upper_blue             = (100,    255,     255)
 
@@ -133,12 +133,12 @@ for img in images:
     mask_binary = cv.bitwise_not(mask)
     mask_with_color = cv.bitwise_and(hsv_image, img.cv_image, mask = mask_binary)
 
-    cv.erode(mask_binary, kernel, iterations=1)
-    cv.erode(mask_binary, kernel, iterations=1)
+    # cv.erode(mask_binary, kernel, iterations=1)
+    # cv.erode(mask_binary, kernel, iterations=1)
 
-    cv.dilate(mask_binary, kernel, iterations=1)
-    cv.dilate(mask_binary, kernel, iterations=1)
-    cv.dilate(mask_binary, kernel, iterations=1)
+    # cv.dilate(mask_binary, kernel, iterations=1)
+    # cv.dilate(mask_binary, kernel, iterations=1)
+    # cv.dilate(mask_binary, kernel, iterations=1)
 
     # -=-=- FIND CONTOURS -=-=- #
     contours, hierarchy = cv.findContours(mask_binary, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_NONE)
@@ -186,13 +186,13 @@ for img in images:
 
 
         # -=-=- Draw bounding box with text -=-=- #
-        x,y,w,h = cv.boundingRect(img.contours[contour].outline)
-        cv.rectangle(img.cv_image, (x,y), (x+w,y+h), color, 3)
-        cv.putText(img.cv_image, img.contours[contour].kind_of_object, (x, y-10), cv.FONT_HERSHEY_SIMPLEX, 1.2, text_color, 4)
+        # x,y,w,h = cv.boundingRect(img.contours[contour].outline)
+        # cv.rectangle(img.cv_image, (x,y), (x+w,y+h), color, 3)
+        # cv.putText(img.cv_image, img.contours[contour].kind_of_object, (x, y-10), cv.FONT_HERSHEY_SIMPLEX, 1.2, text_color, 4)
 
         # -=-=- Draw contour with text -=-=- #
-        # cv.drawContours(img.cv_image, img.contours[contour].outline, -1, color, 2)
-        # cv.putText(img.cv_image, img.contours[contour].kind_of_object, img.contours[contour].position, cv.FONT_HERSHEY_SIMPLEX, 1.2, text_color, 4)
+        cv.drawContours(img.cv_image, img.contours[contour].outline, -1, black[1], 4)
+        cv.putText(img.cv_image, img.contours[contour].kind_of_object, img.contours[contour].position, cv.FONT_HERSHEY_SIMPLEX, 1.2, text_color, 4)
         
     
     # -=-=- save image -=-=- #
