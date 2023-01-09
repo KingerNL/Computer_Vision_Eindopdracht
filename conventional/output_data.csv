@@ -1,157 +1,140 @@
-file_name,found_object, number_of_objects, center_position,orïentation_degrees,color
-foto_cropped.jpg,ring,1,"(109, 114)",20.859113693237305,metal
-foto_cropped2.jpg,ring,1,"(112, 132)",3.7412476539611816,metal
-foto_cropped3.jpg,bolt,1,"(169, 74)",87.07238006591797,metal
-foto_cropped4.jpg,check valve,1,"(78, 77)",34.300052642822266,metal
-foto_mat (1).jpg,bolt,1,"(2172, 2984)",66.7170639038086,metal
-foto_mat (1).jpg,bolt,1,"(2214, 2854)",171.64163208007812,metal
-foto_mat (1).jpg,bolt,1,"(1325, 2689)",129.93002319335938,black
-foto_mat (1).jpg,check valve,1,"(1374, 2461)",82.12657928466797,metal
-foto_mat (1).jpg,bolt,1,"(1190, 2467)",67.49893951416016,metal
-foto_mat (1).jpg,bolt,1,"(921, 2352)",115.28286743164062,metal
-foto_mat (1).jpg,ring,1,"(1357, 2325)",25.087501525878906,metal
-foto_mat (1).jpg,ring,1,"(1617, 2277)",22.60740089416504,metal
-foto_mat (1).jpg,check valve,1,"(1272, 2250)",34.93627166748047,metal
-foto_mat (1).jpg,bolt,1,"(1117, 2197)",14.359207153320312,black
-foto_mat (1).jpg,bolt,1,"(1534, 2124)",86.18077850341797,metal
-foto_mat (1).jpg,bolt,1,"(764, 2062)",35.88946533203125,black
-foto_mat (1).jpg,bolt,1,"(585, 2161)",144.80270385742188,metal
-foto_mat (1).jpg,bolt,1,"(1946, 1965)",174.1678924560547,metal
-foto_mat (1).jpg,ring,1,"(994, 1968)",22.051034927368164,metal
-foto_mat (1).jpg,bolt,1,"(1892, 1949)",176.93470764160156,black
-foto_mat (1).jpg,bolt,1,"(1135, 1901)",175.2498321533203,metal
-foto_mat (1).jpg,ring,1,"(1563, 1908)",15.483943939208984,white
-foto_mat (1).jpg,bolt,1,"(1298, 1924)",158.6307373046875,metal
-foto_mat (1).jpg,bolt,1,"(1775, 1839)",25.47236442565918,metal
-foto_mat (1).jpg,bolt,1,"(1542, 1750)",101.64593505859375,metal
-foto_mat (1).jpg,bolt,1,"(892, 1725)",37.99523162841797,metal
-foto_mat (1).jpg,bolt,1,"(859, 1725)",25.586166381835938,black
-foto_mat (1).jpg,ring,1,"(610, 1732)",59.524803161621094,metal
-foto_mat (1).jpg,bolt,1,"(1085, 1703)",83.42041015625,metal
-foto_mat (1).jpg,check valve,1,"(1396, 1701)",34.54526138305664,metal
-foto_mat (1).jpg,bolt,1,"(1536, 1549)",133.15615844726562,metal
-foto_mat (1).jpg,ring,1,"(1687, 1575)",5.63628625869751,white
-foto_mat (1).jpg,ring,1,"(1290, 1535)",5.343501091003418,metal
-foto_mat (1).jpg,bolt,1,"(1066, 1500)",37.60102844238281,metal
-foto_mat (1).jpg,check valve,1,"(1641, 1399)",121.2479476928711,black
-foto_mat (1).jpg,bolt,1,"(1433, 1350)",4.121503829956055,metal
-foto_mat (1).jpg,ring,1,"(1263, 1332)",4.087800025939941,metal
-foto_mat (1).jpg,bolt,1,"(665, 1372)",32.670257568359375,metal
-foto_mat (1).jpg,ring,1,"(1512, 1081)",55.80398178100586,metal
-foto_mat (1).jpg,bolt,1,"(1214, 1072)",33.6218147277832,black
-foto_mat (1).jpg,check valve,1,"(1228, 772)",82.88301849365234,metal
-foto_mat (1).jpg,bolt,1,"(944, 745)",13.405564308166504,black
-foto_mat (1).jpg,bolt,1,"(952, 1035)",4.636956691741943,metal
-foto_mat (2).jpg,bolt,1,"(1810, 2900)",61.64318084716797,metal
-foto_mat (2).jpg,bolt,1,"(2032, 2938)",69.64837646484375,metal
-foto_mat (2).jpg,bolt,1,"(1226, 2606)",129.1170196533203,black
-foto_mat (2).jpg,check valve,1,"(1275, 2388)",78.81392669677734,metal
-foto_mat (2).jpg,bolt,1,"(1085, 2392)",69.95769500732422,metal
-foto_mat (2).jpg,bolt,1,"(815, 2281)",114.28572845458984,metal
-foto_mat (2).jpg,ring,1,"(1253, 2257)",27.073139190673828,metal
-foto_mat (2).jpg,ring,1,"(1520, 2210)",18.72919464111328,metal
-foto_mat (2).jpg,check valve,1,"(1167, 2182)",33.031551361083984,metal
-foto_mat (2).jpg,bolt,1,"(1008, 2132)",13.277223587036133,black
-foto_mat (2).jpg,bolt,1,"(1430, 2063)",86.53234100341797,metal
-foto_mat (2).jpg,bolt,1,"(648, 2004)",90.19981384277344,metal
-foto_mat (2).jpg,bolt,1,"(473, 2095)",143.82350158691406,metal
-foto_mat (2).jpg,ring,1,"(880, 1912)",28.728412628173828,metal
-foto_mat (2).jpg,bolt,1,"(1855, 1904)",170.9608612060547,metal
-foto_mat (2).jpg,bolt,1,"(1801, 1888)",174.5015869140625,black
-foto_mat (2).jpg,bolt,1,"(1021, 1847)",176.08616638183594,metal
-foto_mat (2).jpg,bolt,1,"(1457, 1851)",177.92221069335938,metal
-foto_mat (2).jpg,bolt,1,"(1186, 1866)",156.56874084472656,metal
-foto_mat (2).jpg,bolt,1,"(1675, 1782)",26.556325912475586,metal
-foto_mat (2).jpg,bolt,1,"(1450, 1717)",135.75979614257812,metal
-foto_mat (2).jpg,bolt,1,"(734, 1699)",25.284603118896484,metal
-foto_mat (2).jpg,bolt,1,"(491, 1688)",68.76834106445312,metal
-foto_mat (2).jpg,bolt,1,"(969, 1657)",101.5560073852539,metal
-foto_mat (2).jpg,bolt,1,"(1284, 1652)",35.0120849609375,metal
-foto_mat (2).jpg,bolt,1,"(1425, 1502)",130.09307861328125,metal
-foto_mat (2).jpg,ring,1,"(1580, 1524)",5.219473361968994,white
-foto_mat (2).jpg,ring,1,"(1173, 1491)",9.659729957580566,metal
-foto_mat (2).jpg,bolt,1,"(942, 1461)",35.879783630371094,metal
-foto_mat (2).jpg,check valve,1,"(1531, 1353)",125.22919464111328,black
-foto_mat (2).jpg,ring,1,"(1141, 1292)",171.4114227294922,metal
-foto_mat (2).jpg,bolt,1,"(1317, 1306)",178.62110900878906,metal
-foto_mat (2).jpg,bolt,1,"(534, 1339)",32.22726058959961,metal
-foto_mat (2).jpg,bolt,1,"(1392, 1039)",59.64448547363281,metal
-foto_mat (2).jpg,bolt,1,"(1087, 1038)",32.709938049316406,black
-foto_mat (2).jpg,check valve,1,"(1096, 742)",86.11637115478516,metal
-foto_mat (2).jpg,bolt,1,"(815, 993)",2.683134078979492,metal
-foto_mat (3).jpg,bolt,1,"(1895, 2789)",74.4018325805664,metal
-foto_mat (3).jpg,bolt,1,"(1469, 2356)",115.38968658447266,black
-foto_mat (3).jpg,bolt,1,"(1282, 2185)",56.18940353393555,metal
-foto_mat (3).jpg,bolt,1,"(1005, 2139)",100.04877471923828,metal
-foto_mat (3).jpg,check valve,1,"(1472, 2137)",66.65657043457031,metal
-foto_mat (3).jpg,ring,1,"(1421, 2017)",14.720682144165039,metal
-foto_mat (3).jpg,check valve,1,"(1316, 1965)",19.594091415405273,metal
-foto_mat (3).jpg,bolt,1,"(613, 2035)",129.54266357421875,metal
-foto_mat (3).jpg,bolt,1,"(765, 1910)",58.55342483520508,metal
-foto_mat (3).jpg,ring,1,"(1677, 1915)",16.455541610717773,metal
-foto_mat (3).jpg,bolt,1,"(1147, 1952)",0.49571719765663147,black
-foto_mat (3).jpg,bolt,1,"(1552, 1789)",73.36443328857422,metal
-foto_mat (3).jpg,ring,1,"(971, 1770)",16.127899169921875,metal
-foto_mat (3).jpg,bolt,1,"(1515, 1695)",100.77806091308594,metal
-foto_mat (3).jpg,bolt,1,"(1096, 1681)",163.05923461914062,metal
-foto_mat (3).jpg,ring,1,"(528, 1642)",70.3015365600586,metal
-foto_mat (3).jpg,bolt,1,"(781, 1588)",15.631102561950684,metal
-foto_mat (3).jpg,bolt,1,"(1266, 1657)",143.2104949951172,metal
-foto_mat (3).jpg,bolt,1,"(1951, 1536)",156.0232696533203,metal
-foto_mat (3).jpg,bolt,1,"(1895, 1536)",162.33969116210938,black
-foto_mat (3).jpg,ring,1,"(1002, 1501)",8.258698463439941,metal
-foto_mat (3).jpg,bolt,1,"(1539, 1566)",9.357200622558594,metal
-foto_mat (3).jpg,ring,1,"(1481, 1432)",82.30313873291016,metal
-foto_mat (3).jpg,check valve,1,"(1315, 1423)",23.59366226196289,metal
-foto_mat (3).jpg,bolt,1,"(1743, 1459)",15.934986114501953,metal
-foto_mat (3).jpg,bolt,1,"(908, 1314)",18.304546356201172,black
-foto_mat (3).jpg,bolt,1,"(935, 1307)",23.443376541137695,metal
-foto_mat (3).jpg,bolt,1,"(1420, 1236)",118.69312286376953,metal
-foto_mat (3).jpg,ring,1,"(1165, 1287)",169.28379821777344,metal
-foto_mat (3).jpg,ring,1,"(1588, 1222)",172.5568084716797,metal
-foto_mat (3).jpg,bolt,1,"(479, 1284)",18.436237335205078,metal
-foto_mat (3).jpg,ring,1,"(1084, 1093)",166.37428283691406,metal
-foto_mat (3).jpg,check valve,1,"(1502, 1057)",113.1686019897461,black
-foto_mat (3).jpg,bolt,1,"(1269, 1065)",170.5167694091797,black
-foto_mat (3).jpg,bolt,1,"(966, 844)",18.535999298095703,black
-foto_mat (3).jpg,bolt,1,"(1287, 763)",48.461578369140625,metal
-foto_mat (3).jpg,bolt,1,"(677, 864)",168.83580017089844,metal
-foto_mat (3).jpg,check valve,1,"(903, 533)",72.9277572631836,metal
-foto_mat (4).jpg,bolt,1,"(2031, 2860)",70.24431610107422,metal
-foto_mat (4).jpg,bolt,1,"(1626, 2297)",106.39579010009766,black
-foto_mat (4).jpg,bolt,1,"(1115, 2152)",92.15062713623047,metal
-foto_mat (4).jpg,bolt,1,"(1410, 2154)",47.96185302734375,metal
-foto_mat (4).jpg,check valve,1,"(1588, 2080)",58.2150993347168,metal
-foto_mat (4).jpg,bolt,1,"(724, 2107)",120.13524627685547,metal
-foto_mat (4).jpg,ring,1,"(1516, 1968)",1.32864248752594,metal
-foto_mat (4).jpg,bolt,1,"(846, 1960)",45.75422286987305,metal
-foto_mat (4).jpg,check valve,1,"(1404, 1934)",4.683881759643555,metal
-foto_mat (4).jpg,bolt,1,"(1232, 1944)",170.1195831298828,black
-foto_mat (4).jpg,ring,1,"(1758, 1827)",0.9984267950057983,metal
-foto_mat (4).jpg,ring,1,"(1027, 1794)",20.258153915405273,metal
-foto_mat (4).jpg,ring,1,"(576, 1738)",66.65377044677734,metal
-foto_mat (4).jpg,bolt,1,"(1609, 1724)",65.98834991455078,metal
-foto_mat (4).jpg,bolt,1,"(1134, 1685)",152.78329467773438,metal
-foto_mat (4).jpg,bolt,1,"(820, 1615)",17.076322555541992,metal
-foto_mat (4).jpg,bolt,1,"(1296, 1637)",133.51254272460938,metal
-foto_mat (4).jpg,bolt,1,"(1007, 1531)",54.54780578613281,metal
-foto_mat (4).jpg,ring,1,"(1556, 1518)",171.90235900878906,white
-foto_mat (4).jpg,bolt,1,"(1911, 1420)",151.25929260253906,black
-foto_mat (4).jpg,bolt,1,"(1968, 1411)",151.6054229736328,metal
-foto_mat (4).jpg,bolt,1,"(1473, 1384)",74.87100219726562,metal
-foto_mat (4).jpg,check valve,1,"(1308, 1403)",12.765932083129883,metal
-foto_mat (4).jpg,bolt,1,"(908, 1348)",12.633744239807129,metal
-foto_mat (4).jpg,bolt,1,"(1740, 1365)",3.813655376434326,metal
-foto_mat (4).jpg,ring,1,"(1136, 1296)",155.0573272705078,metal
-foto_mat (4).jpg,bolt,1,"(471, 1405)",9.02834701538086,metal
-foto_mat (4).jpg,bolt,1,"(1383, 1204)",107.8340072631836,metal
-foto_mat (4).jpg,ring,1,"(1545, 1163)",168.00074768066406,metal
-foto_mat (4).jpg,ring,1,"(1025, 1122)",142.0498504638672,metal
-foto_mat (4).jpg,bolt,1,"(1170, 1085)",155.84210205078125,black
-foto_mat (4).jpg,bolt,1,"(1212, 1055)",155.3469696044922,metal
-foto_mat (4).jpg,check valve,1,"(1433, 1020)",105.24950408935547,black
-foto_mat (4).jpg,bolt,1,"(869, 903)",9.135772705078125,black
-foto_mat (4).jpg,ring,1,"(1166, 772)",46.88711166381836,metal
-foto_mat (4).jpg,bolt,1,"(593, 975)",158.6713409423828,metal
-foto_mat (4).jpg,check valve,1,"(757, 625)",61.82284927368164,metal
-foto_mat (4).jpg,bolt,1,"(2257, 27)",168.1660919189453,metal
+file_name, found_object, number_of_objects, center_position (x;y), orïentation (deg), color
+Image_Yellow (107).jpg,check valve,1,"(1556, 2638)",57.50532913208008,black
+Image_Yellow (107).jpg,bolt,1,"(1233, 2333)",85.0926742553711,black
+Image_Yellow (107).jpg,ring,1,"(1985, 2276)",132.95504760742188,metal
+Image_Yellow (107).jpg,bolt,1,"(2216, 2194)",3.5678560733795166,metal
+Image_Yellow (107).jpg,bolt,1,"(2680, 2168)",7.1388702392578125,black
+Image_Yellow (107).jpg,ring,1,"(1630, 2113)",113.8542709350586,metal
+Image_Yellow (107).jpg,ring,1,"(744, 2000)",88.79818725585938,metal
+Image_Yellow (107).jpg,ring,1,"(1831, 1857)",120.46998596191406,metal
+Image_Yellow (107).jpg,bolt,1,"(2433, 1833)",3.1671550273895264,metal
+Image_Yellow (107).jpg,bolt,1,"(2081, 1747)",138.72119140625,metal
+Image_Yellow (107).jpg,ring,1,"(1539, 1808)",115.02288055419922,pink
+Image_Yellow (107).jpg,bolt,1,"(364, 1645)",84.11592102050781,black
+Image_Yellow (107).jpg,bolt,1,"(906, 1660)",163.60635375976562,metal
+Image_Yellow (107).jpg,bolt,1,"(1779, 1470)",113.34944915771484,metal
+Image_Yellow (107).jpg,check valve,1,"(1365, 1411)",36.14128112792969,metal
+Image_Yellow (107).jpg,ring,1,"(2556, 1362)",127.09268951416016,metal
+Image_Yellow (107).jpg,bolt,1,"(2087, 1329)",108.77226257324219,metal
+Image_Yellow (107).jpg,ring,1,"(1064, 1231)",117.5767822265625,metal
+Image_Yellow (107).jpg,ring,1,"(255, 1238)",86.91292572021484,metal
+Image_Yellow (107).jpg,bolt,1,"(720, 1217)",140.13624572753906,black
+Image_Yellow (107).jpg,bolt,1,"(844, 1063)",104.18866729736328,metal
+Image_Yellow (107).jpg,check valve,1,"(2194, 1044)",174.1794891357422,metal
+Image_Yellow (107).jpg,ring,1,"(2504, 1081)",121.89852142333984,metal
+Image_Yellow (107).jpg,check valve,1,"(1553, 896)",122.20589447021484,black
+Image_Yellow (107).jpg,bolt,1,"(2721, 981)",151.0768585205078,metal
+Image_Yellow (107).jpg,ring,1,"(1895, 758)",119.95271301269531,metal
+Image_Yellow (107).jpg,bolt,1,"(1891, 925)",58.9631233215332,metal
+Image_Yellow (107).jpg,ring,1,"(779, 739)",98.89408874511719,metal
+Image_Yellow (107).jpg,ring,1,"(2654, 603)",79.97700500488281,metal
+Image_Yellow (107).jpg,check valve,1,"(1626, 530)",121.31822967529297,metal
+Image_Yellow (107).jpg,bolt,1,"(1248, 639)",28.619911193847656,metal
+Image_Yellow (107).jpg,ring,1,"(2256, 368)",114.37998962402344,metal
+Image_Yellow (107).jpg,ring,1,"(1944, 231)",144.96286010742188,black
+Image_Yellow (107).jpg,bolt,1,"(1597, 259)",124.10519409179688,metal
+Image_Yellow (12).jpg,ring,1,"(1243, 2685)",11.425772666931152,pink
+Image_Yellow (12).jpg,check valve,1,"(1776, 2632)",49.38258743286133,metal
+Image_Yellow (12).jpg,bolt,1,"(2308, 2547)",33.447975158691406,metal
+Image_Yellow (12).jpg,ring,1,"(894, 2282)",63.51061248779297,metal
+Image_Yellow (12).jpg,ring,1,"(2102, 2209)",129.47227478027344,metal
+Image_Yellow (12).jpg,ring,1,"(1560, 2219)",115.30220031738281,metal
+Image_Yellow (12).jpg,bolt,1,"(2286, 2082)",168.74014282226562,metal
+Image_Yellow (12).jpg,bolt,1,"(621, 2079)",24.960180282592773,black
+Image_Yellow (12).jpg,bolt,1,"(2695, 1961)",78.23707580566406,black
+Image_Yellow (12).jpg,ring,1,"(1861, 1863)",116.55052947998047,metal
+Image_Yellow (12).jpg,bolt,1,"(942, 1896)",9.940152168273926,metal
+Image_Yellow (12).jpg,ring,1,"(1474, 1771)",107.4602279663086,pink
+Image_Yellow (12).jpg,bolt,1,"(2055, 1709)",123.44276428222656,metal
+Image_Yellow (12).jpg,check valve,1,"(1125, 1702)",129.62376403808594,black
+Image_Yellow (12).jpg,bolt,1,"(2389, 1706)",169.3878936767578,metal
+Image_Yellow (12).jpg,ring,1,"(294, 1673)",74.2116928100586,metal
+Image_Yellow (12).jpg,bolt,1,"(1717, 1523)",96.29358673095703,metal
+Image_Yellow (12).jpg,ring,1,"(1000, 1437)",99.1803207397461,metal
+Image_Yellow (12).jpg,ring,1,"(2701, 1349)",132.87393188476562,black
+Image_Yellow (12).jpg,ring,1,"(619, 1323)",85.04230499267578,metal
+Image_Yellow (12).jpg,bolt,1,"(1192, 1251)",142.35134887695312,black
+Image_Yellow (12).jpg,ring,1,"(2256, 1197)",113.2104263305664,black
+Image_Yellow (12).jpg,check valve,1,"(2655, 1079)",138.78341674804688,metal
+Image_Yellow (12).jpg,bolt,1,"(1928, 1194)",146.0653076171875,metal
+Image_Yellow (12).jpg,check valve,1,"(1296, 1003)",56.1240119934082,metal
+Image_Yellow (12).jpg,bolt,1,"(822, 939)",116.59754180908203,metal
+Image_Yellow (12).jpg,ring,1,"(2055, 894)",110.1047134399414,metal
+Image_Yellow (12).jpg,bolt,1,"(565, 859)",35.94481658935547,metal
+Image_Yellow (12).jpg,check valve,1,"(1359, 695)",155.6055450439453,metal
+Image_Yellow (12).jpg,ring,1,"(2229, 676)",166.1116943359375,metal
+Image_Yellow (12).jpg,bolt,1,"(1622, 938)",18.490644454956055,metal
+Image_Yellow (12).jpg,ring,1,"(1999, 542)",110.91881561279297,metal
+Image_Yellow (12).jpg,bolt,1,"(1328, 410)",108.8804702758789,metal
+Image_Yellow (12).jpg,ring,1,"(1513, 210)",104.24491119384766,black
+Image_Yellow (143).jpg,bolt,1,"(1215, 1169)",112.87035369873047,black
+Image_Yellow (143).jpg,ring,1,"(1435, 1048)",99.58617401123047,metal
+Image_Yellow (143).jpg,ring,1,"(596, 1000)",85.44248962402344,metal
+Image_Yellow (143).jpg,check valve,1,"(1168, 906)",169.71205139160156,black
+Image_Yellow (143).jpg,bolt,1,"(496, 704)",86.95061492919922,black
+Image_Yellow (143).jpg,ring,1,"(833, 697)",84.86367797851562,metal
+Image_Yellow (143).jpg,ring,1,"(1270, 711)",91.74697875976562,pink
+Image_Yellow (143).jpg,ring,1,"(1698, 696)",99.27153015136719,metal
+Image_Yellow (143).jpg,bolt,1,"(1569, 506)",105.79520416259766,metal
+Image_Yellow (143).jpg,bolt,1,"(382, 522)",84.39138793945312,metal
+Image_Yellow (143).jpg,ring,1,"(880, 502)",85.54012298583984,black
+Image_Yellow (143).jpg,check valve,1,"(1248, 465)",62.53446578979492,black
+Image_Yellow (143).jpg,ring,1,"(1418, 255)",90.62535095214844,metal
+Image_Yellow (143).jpg,bolt,1,"(578, 250)",18.049713134765625,black
+Image_Yellow (143).jpg,ring,1,"(1122, 237)",90.92089080810547,metal
+Image_Yellow (143).jpg,check valve,1,"(1264, 78)",48.50588607788086,black
+Image_Yellow (4).jpg,ring,1,"(960, 1844)",96.85675811767578,metal
+Image_Yellow (4).jpg,ring,1,"(1793, 1840)",117.74905395507812,metal
+Image_Yellow (4).jpg,bolt,1,"(743, 1836)",161.8659210205078,metal
+Image_Yellow (4).jpg,ring,1,"(2373, 1768)",117.7286605834961,metal
+Image_Yellow (4).jpg,bolt,1,"(1354, 1994)",23.90475082397461,metal
+Image_Yellow (4).jpg,bolt,1,"(1958, 1552)",16.817523956298828,metal
+Image_Yellow (4).jpg,bolt,1,"(315, 1509)",116.30039978027344,black
+Image_Yellow (4).jpg,check valve,1,"(782, 1429)",97.14472198486328,black
+Image_Yellow (4).jpg,ring,1,"(1467, 1414)",109.96063232421875,metal
+Image_Yellow (4).jpg,ring,1,"(2499, 1363)",120.79391479492188,metal
+Image_Yellow (4).jpg,check valve,1,"(2244, 1261)",25.840028762817383,black
+Image_Yellow (4).jpg,bolt,1,"(1719, 1242)",152.33053588867188,metal
+Image_Yellow (4).jpg,check valve,1,"(1417, 1105)",133.07986450195312,metal
+Image_Yellow (4).jpg,bolt,1,"(389, 1080)",22.219697952270508,metal
+Image_Yellow (4).jpg,ring,1,"(2417, 1070)",115.20507049560547,metal
+Image_Yellow (4).jpg,check valve,1,"(1932, 974)",139.214599609375,black
+Image_Yellow (4).jpg,bolt,1,"(2639, 943)",145.86959838867188,metal
+Image_Yellow (4).jpg,bolt,1,"(1266, 787)",14.933006286621094,metal
+Image_Yellow (4).jpg,bolt,1,"(1754, 677)",71.6712417602539,black
+Image_Yellow (4).jpg,ring,1,"(2533, 562)",75.19241333007812,metal
+Image_Yellow (4).jpg,bolt,1,"(860, 941)",152.77774047851562,metal
+Image_Yellow (4).jpg,ring,1,"(1045, 548)",97.59999084472656,metal
+Image_Yellow (4).jpg,ring,1,"(2090, 351)",109.38687133789062,metal
+Image_Yellow (4).jpg,bolt,1,"(1381, 286)",118.60070037841797,metal
+Image_Yellow (4).jpg,bolt,1,"(1681, 144)",159.8077850341797,metal
+Image_Yellow (61).jpg,ring,1,"(1067, 2028)",90.26856231689453,metal
+Image_Yellow (61).jpg,bolt,1,"(812, 2053)",155.7971649169922,metal
+Image_Yellow (61).jpg,ring,1,"(2013, 1914)",119.11064147949219,metal
+Image_Yellow (61).jpg,bolt,1,"(1548, 2155)",14.654799461364746,metal
+Image_Yellow (61).jpg,ring,1,"(2654, 1760)",119.35053253173828,metal
+Image_Yellow (61).jpg,bolt,1,"(271, 1727)",109.6051254272461,black
+Image_Yellow (61).jpg,check valve,1,"(805, 1578)",89.18675994873047,black
+Image_Yellow (61).jpg,bolt,1,"(2145, 1571)",7.99354887008667,metal
+Image_Yellow (61).jpg,ring,1,"(1573, 1480)",109.02925109863281,black
+Image_Yellow (61).jpg,ring,1,"(2693, 1307)",118.3602294921875,metal
+Image_Yellow (61).jpg,bolt,1,"(1827, 1261)",140.57615661621094,metal
+Image_Yellow (61).jpg,bolt,1,"(309, 1240)",17.82980728149414,metal
+Image_Yellow (61).jpg,check valve,1,"(2403, 1225)",17.017438888549805,black
+Image_Yellow (61).jpg,check valve,1,"(1474, 1152)",124.6563491821289,black
+Image_Yellow (61).jpg,ring,1,"(2542, 1009)",113.5152816772461,metal
+Image_Yellow (61).jpg,check valve,1,"(2014, 955)",129.5150146484375,black
+Image_Yellow (61).jpg,bolt,1,"(1257, 832)",8.457048416137695,metal
+Image_Yellow (61).jpg,bolt,1,"(2759, 851)",135.6315460205078,metal
+Image_Yellow (61).jpg,bolt,1,"(1775, 664)",66.9005355834961,black
+Image_Yellow (61).jpg,bolt,1,"(838, 1043)",144.57998657226562,metal
+Image_Yellow (61).jpg,ring,1,"(980, 611)",94.094970703125,metal
+Image_Yellow (61).jpg,ring,1,"(2567, 480)",69.7748794555664,metal
+Image_Yellow (61).jpg,ring,1,"(2071, 308)",102.9532470703125,metal
+Image_Yellow (61).jpg,bolt,1,"(1310, 306)",110.75200653076172,metal
+Image_Yellow (61).jpg,bolt,1,"(1606, 142)",148.2754669189453,metal
+Image_Yellow (84).jpg,ring,1,"(1189, 850)",104.56688690185547,metal
+Image_Yellow (84).jpg,check valve,1,"(287, 717)",149.8047332763672,black
+Image_Yellow (84).jpg,bolt,1,"(904, 352)",9.094034194946289,black
+Image_Yellow (84).jpg,bolt,1,"(1314, 323)",49.92562484741211,metal
+Yellow_image (1).jpg,check valve,1,"(99, 70)",124.80918884277344,metal
