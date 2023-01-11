@@ -10,8 +10,7 @@ from math import pi, sqrt
 
 # -=-=-=-=- BEGIN SCREEN -=-=-=-=- #
 
-ascii_file = open('../image_objects_ordered/coding.txt', 'r')
-print(''.join([line for line in ascii_file]))
+print(''.join([line for line in open('../image_objects_ordered/coding.txt', 'r')]))
 input('press enter to start detection...')
 
 # -=-=-=-=- CLASSES -=-=-=-=- #
