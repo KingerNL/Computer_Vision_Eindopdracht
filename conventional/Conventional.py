@@ -120,7 +120,7 @@ def find_object(contour, moment, mask) -> str:
     cv.drawContours(blue_mask, [contour], -1, 255, -1)
     individual_masks = cv.bitwise_and(mask, mask, mask = blue_mask)
     blue_mask = cv.inRange(individual_masks, lower_blue, upper_blue)
-    print(np.mean(blue_mask))
+    # print(np.mean(blue_mask))
 
     if np.mean(blue_mask) > 0:
         return 'check valve'
