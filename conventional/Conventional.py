@@ -43,7 +43,7 @@ class image():
             contour_color = black[1]
 
         cv.drawContours(original_image, contour, -1, contour_color, 4)
-        cv.putText(original_image, kind_of_object, position, cv.FONT_HERSHEY_SIMPLEX, 1.2, text_color, 6)
+        # cv.putText(original_image, kind_of_object, position, cv.FONT_HERSHEY_SIMPLEX, 1.2, text_color, 6)
 
     def draw_bounding(self, original_image, contour, position, kind_of_object, color):
         if kind_of_object == 'check valve':
@@ -93,6 +93,13 @@ upper_blue             = (120,    255,     255)
 # how big the smallest area should be, the other ones get filtered.
 filter_contour_area = 900
 
+# mask for identifying nuts
+contours_nut, _ = cv.findContours(cv.bitwise_not(cv.inRange(cv.cvtColor(cv.imread("./labeled_images/nut.jpg"), cv.COLOR_BGR2HSV), lower_background_color, upper_background_color)), cv.RETR_EXTERNAL, cv.CHAIN_APPROX_NONE)
+nut_contour_list    = []
+for contour in contours_nut:
+    if (cv.contourArea(contour) > 1000):
+        nut_contour_list.append(contour)
+
 # how big the kernel should be for the dilation / erosion.
 kernel = np.ones((4, 4), np.uint8)
 
@@ -114,18 +121,24 @@ def roundness(contour, moments) -> float:
 
 # TODO: Find ways to detect the other objects
 def find_object(contour, moment, mask) -> str:
-    k_value = roundness(contour, moment)
     
+    # check valve check
     blue_mask = np.zeros(mask.shape[:2], dtype="uint8")
     cv.drawContours(blue_mask, [contour], -1, 255, -1)
     individual_masks = cv.bitwise_and(mask, mask, mask = blue_mask)
     blue_mask = cv.inRange(individual_masks, lower_blue, upper_blue)
-    # print(np.mean(blue_mask))
+
+    # ring check
+    k_value = roundness(contour, moment)
+    # nut check
+    perc_nut = cv.matchShapes(nut_contour_list[0], contour, cv.CONTOURS_MATCH_I1, 0.0)
 
     if np.mean(blue_mask) > 0:
         return 'check valve'
-    elif k_value < 2.5:
+    elif k_value < 1.6:
         return 'ring'
+    elif perc_nut < 0.04:
+        return 'nut'
     else:
         return 'bolt'
 
@@ -174,11 +187,9 @@ for img in images:
     mask_binary = cv.bitwise_not(mask)
     mask_with_color = cv.bitwise_and(hsv_image, img.cv_image, mask = mask_binary)
 
-    # cv.erode(mask_binary, kernel, iterations=1)
-    mask_binary =  cv.erode(mask_binary, kernel, iterations=1)
+    # mask_binary =  cv.erode(mask_binary, kernel, iterations=1)
 
-    mask_binary = cv.dilate(mask_binary, kernel, iterations=1)
-    mask_binary = cv.dilate(mask_binary, kernel, iterations=1)
+    # mask_binary = cv.dilate(mask_binary, kernel, iterations=1)
 
     cv.dilate(mask_binary, kernel, iterations=1)
 
@@ -210,7 +221,7 @@ for img in images:
     # -=-=- draw contours (bounding box optional) and put text -=-=- #    
     for contour in range(len(img.contours)):
         img.draw_contour(img.cv_image, img.contours[contour].outline, img.contours[contour].position, img.contours[contour].kind_of_object, img.contours[contour].color)
-        # img.draw_bounding(img.cv_image, img.contours[contour].outline, img.contours[contour].position, img.contours[contour].kind_of_object, img.contours[contour].color)
+        img.draw_bounding(img.cv_image, img.contours[contour].outline, img.contours[contour].position, img.contours[contour].kind_of_object, img.contours[contour].color)
 
 # -=-=-=- SAVE IMAGES -=-=-=- #
 for img in images:
@@ -218,9 +229,9 @@ for img in images:
     cv.imwrite(output_dir, img.cv_image)
     
     # -=-=- save data to csv -=-=- #
-    # with open('./output_data.csv', 'a', encoding='UTF8', newline='') as csv_file:
-    #     csv_writer = csv.writer(csv_file)
-    #     for contour in range(len(img.contours)):
-    #         csv_writer.writerow((img.name, img.contours[contour].kind_of_object, 1, img.contours[contour].position, img.contours[contour].oriëntation, img.contours[contour].color))
+    with open('./output_data.csv', 'a', encoding='UTF8', newline='') as csv_file:
+        csv_writer = csv.writer(csv_file)
+        for contour in range(len(img.contours)):
+            csv_writer.writerow((img.name, img.contours[contour].kind_of_object, 1, img.contours[contour].position, img.contours[contour].oriëntation, img.contours[contour].color))
 
 print("done! data saved to: output_data.csv")
