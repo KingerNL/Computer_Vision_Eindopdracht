@@ -25,48 +25,36 @@ class image():
     def add_contour(self, contour):
         self.contours.append(contour)
     
-    def draw_contour(self, original_image, contour, position, kind_of_object: str, color: str):
+    def draw_contour(self, original_image, contour, kind_of_object: str, color: str):
         if kind_of_object == 'check valve':
-            text_color = black[1]
             contour_color = blue[1]
         elif color == 'white':
-            text_color = black[1]
             contour_color = white[1]
         elif color == 'black':
-            text_color = white[1]
             contour_color = black[1]
         elif color == 'pink':
-            text_color = black[1]
             contour_color = pink[1]
         else:
-            text_color = black[1]
-            contour_color = black[1]
-
-        cv.drawContours(original_image, contour, -1, contour_color, 4)
-        # cv.putText(original_image, kind_of_object, position, cv.FONT_HERSHEY_SIMPLEX, 1.2, text_color, 6)
-
-    def draw_bounding(self, original_image, contour, position, kind_of_object, color):
-        if kind_of_object == 'check valve':
-            text_color = black[1]
-            contour_color = blue[1]
-        elif color == 'white':
-            text_color = black[1]
-            contour_color = white[1]
-        elif color == 'black':
-            text_color = white[1]
-            contour_color = black[1]
-        elif color == 'pink':
-            text_color = black[1]
-            contour_color = pink[1]
-        else:
-            text_color = black[1]
             contour_color = metal[1]
 
+        cv.drawContours(original_image, contour, -1, contour_color, 4)
+
+    def draw_bounding(self, original_image, contour, kind_of_object, color):
+        if kind_of_object == 'check valve':
+            contour_color = blue[1]
+        elif color == 'white':
+            contour_color = white[1]
+        elif color == 'black':
+            contour_color = black[1]
+        elif color == 'pink':
+            contour_color = pink[1]
+        else:
+            contour_color = metal[1]
 
         # -=-=- Draw bounding box with text -=-=- #
         x,y,w,h = cv.boundingRect(contour)
         cv.rectangle(original_image, (x,y), (x+w,y+h), contour_color, 3)
-        cv.putText(original_image, kind_of_object, (x, y-10), cv.FONT_HERSHEY_SIMPLEX, 1.2, text_color, 4)
+        cv.putText(original_image, kind_of_object, (x, y-10), cv.FONT_HERSHEY_SIMPLEX, 1.2, black[1], 4)
 
 class object():
     def __init__(self, outline, kind_of_object: str, position: tuple, oriëntation: float, color: str):
@@ -89,6 +77,8 @@ lower_background_color = (13,     145,      20)
 upper_background_color = (35,     255,     255)
 lower_blue             = (30,     120,      20)
 upper_blue             = (120,    255,     255)
+lower_pink             = (130,    50,      20)
+upper_pink             = (180,    255,     255)
 
 # how big the smallest area should be, the other ones get filtered.
 filter_contour_area = 900
@@ -107,10 +97,12 @@ kernel = np.ones((4, 4), np.uint8)
 #TODO: Check if color value's corresponts. Or change the heuristic.
 white: np.ndarray  = np.array(["white",  (210, 210, 210)],   dtype=object)
 black: np.ndarray  = np.array(["black",  (30,  30,  30 )],    dtype=object)
-pink:  np.ndarray  = np.array(["pink",   (120, 90,  220)], dtype=object)
 metal: np.ndarray  = np.array(["metal",  (120, 120, 120)], dtype=object)
+
+pink:  np.ndarray  = np.array(["pink",   (120, 90,  220)], dtype=object)
 blue:  np.ndarray  = np.array(["blue",   (255, 100 ,10 )],  dtype=object)
-colors: list = (white, black, pink, metal)
+
+colors: list = (white, black, metal)
 
 # -=-=-=-=- DECLARE FUNCTIONS -=-=-=-=- #
 
@@ -142,12 +134,20 @@ def find_object(contour, moment, mask) -> str:
     else:
         return 'bolt'
 
-def find_color(contour, original_image) -> str:
+def find_color(contour, original_image, cont_mask) -> str:
     
-    mask = np.zeros(original_image.shape[:2], np.uint8)
-    cv.drawContours(mask, contour, -1, 255, -1)
+    mask = np.zeros(original_image.shape[:2], dtype="uint8")
+    cv.drawContours(mask, [contour], -1, 255, -1)
     
-    # mean returned: BGR = Blue, Green, Red
+    # check pink
+    pink_mask = np.zeros(cont_mask.shape[:2], dtype="uint8")
+    cv.drawContours(pink_mask, [contour], -1, 255, -1)
+    individual_masks = cv.bitwise_and(cont_mask, cont_mask, mask = pink_mask)
+    pink_mask = cv.inRange(individual_masks, lower_pink, upper_pink)
+    
+    if np.mean(pink_mask) > 0:
+        return 'pink'
+
     mean = cv.mean(original_image, mask=mask)[0:3]
     min_rmse = 1000000
     # print(mean)
@@ -156,16 +156,11 @@ def find_color(contour, original_image) -> str:
         gg = color[1][1]
         rr = color[1][2]
         rmse = sqrt( ( (mean[2]-rr)*(mean[2]-rr) + (mean[1]-gg)*(mean[1]-gg) + (mean[0]-bb)*(mean[0]-bb) )/3 )
-        # colorname = color[0]
-        # print(colorname,rmse)
+
         if rmse < min_rmse:
             min_rmse = rmse
             match_color = color[0]
     
-    # print("")
-    # print("match_color:", match_color)
-    # print("rmse:", min_rmse)
-    # print("")
     return match_color
 
 # -=-=-=- READ IMAGES  -=-=-=- #
@@ -187,10 +182,6 @@ for img in images:
     mask_binary = cv.bitwise_not(mask)
     mask_with_color = cv.bitwise_and(hsv_image, img.cv_image, mask = mask_binary)
 
-    # mask_binary =  cv.erode(mask_binary, kernel, iterations=1)
-
-    # mask_binary = cv.dilate(mask_binary, kernel, iterations=1)
-
     cv.dilate(mask_binary, kernel, iterations=1)
 
     # -=-=- FIND CONTOURS -=-=- #
@@ -208,7 +199,7 @@ for img in images:
             (_,_),(_,_),angle = cv.fitEllipse(contour)
 
             # -=- find closest color -=- #
-            color = find_color(contour, img.cv_image)
+            color = find_color(contour, img.cv_image, mask_with_color)
             
             # -=- find kind of object -=- #
             identified_item = find_object(contour, moment, mask_with_color)
@@ -220,8 +211,8 @@ for img in images:
 
     # -=-=- draw contours (bounding box optional) and put text -=-=- #    
     for contour in range(len(img.contours)):
-        img.draw_contour(img.cv_image, img.contours[contour].outline, img.contours[contour].position, img.contours[contour].kind_of_object, img.contours[contour].color)
-        img.draw_bounding(img.cv_image, img.contours[contour].outline, img.contours[contour].position, img.contours[contour].kind_of_object, img.contours[contour].color)
+        img.draw_contour(img.cv_image, img.contours[contour].outline, img.contours[contour].kind_of_object, img.contours[contour].color)
+        img.draw_bounding(img.cv_image, img.contours[contour].outline, img.contours[contour].kind_of_object, img.contours[contour].color)
 
 # -=-=-=- SAVE IMAGES -=-=-=- #
 for img in images:
@@ -229,9 +220,9 @@ for img in images:
     cv.imwrite(output_dir, img.cv_image)
     
     # -=-=- save data to csv -=-=- #
-    with open('./output_data.csv', 'a', encoding='UTF8', newline='') as csv_file:
-        csv_writer = csv.writer(csv_file)
-        for contour in range(len(img.contours)):
-            csv_writer.writerow((img.name, img.contours[contour].kind_of_object, 1, img.contours[contour].position, img.contours[contour].oriëntation, img.contours[contour].color))
+    # with open('./output_data.csv', 'a', encoding='UTF8', newline='') as csv_file:
+    #     csv_writer = csv.writer(csv_file)
+    #     for contour in range(len(img.contours)):
+    #         csv_writer.writerow((img.name, img.contours[contour].kind_of_object, 1, img.contours[contour].position, img.contours[contour].oriëntation, img.contours[contour].color))
 
 print("done! data saved to: output_data.csv")
