@@ -1,4 +1,5 @@
 # This document isn't written in PEP8, will try and change this to a later date.
+# Made by: Mart Veldkamp
 # -=-=-=- IMPORT LIBRARY'S -=-=-=- #
 import numpy as np
 import cv2 as cv
