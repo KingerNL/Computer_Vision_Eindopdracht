@@ -179,7 +179,7 @@ for img in images:
     # filter image on HSV color ranges
     mask = cv.inRange(hsv_image, lower_background_color, upper_background_color)
     
-    # erode / dilate images for better quality masks
+    # dilate images for better quality masks
     mask_binary = cv.bitwise_not(mask)
     mask_with_color = cv.bitwise_and(hsv_image, img.cv_image, mask = mask_binary)
 
