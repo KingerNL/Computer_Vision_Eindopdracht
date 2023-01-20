@@ -58,13 +58,12 @@ class image():
         cv.putText(original_image, kind_of_object, (x, y-10), cv.FONT_HERSHEY_SIMPLEX, 1.2, black[1], 4)
 
 class object():
-    def __init__(self, outline, kind_of_object: str, position: tuple, oriëntation: float, color: str, squirness: float):
+    def __init__(self, outline, kind_of_object: str, position: tuple, oriëntation: float, color: str):
         self.kind_of_object = kind_of_object
         self.color          = color
         self.position       = position
         self.oriëntation    = oriëntation
         self.outline        = outline
-        self.squirness      = squirness
 
 # -=-=-=- VARIABLES -=-=-=- #
 
@@ -119,6 +118,7 @@ def find_object(contour, moment, mask) -> str:
     # check valve check
     blue_mask = np.zeros(mask.shape[:2], dtype="uint8")
     cv.drawContours(blue_mask, [contour], -1, 255, -1)
+    squirness = roundness(contour, moment)
     individual_masks = cv.bitwise_and(mask, mask, mask = blue_mask)
     blue_mask = cv.inRange(individual_masks, lower_blue, upper_blue)
 
@@ -133,7 +133,7 @@ def find_object(contour, moment, mask) -> str:
         return 'ring'
     elif perc_nut < 0.04:
         return 'nut'
-    elif contour.squirness < 1:
+    elif squirness < 1.4:
         return 'metal attachment'
     else:
         return 'bolt'
@@ -209,7 +209,7 @@ for img in images:
             identified_item = find_object(contour, moment, mask_with_color)
             
             # -=- add object to list -=- #
-            img.add_contour(object(contour, identified_item, (cX, cY), angle, color, 2.5))
+            img.add_contour(object(contour, identified_item, (cX, cY), angle, color))
 
     print("found", len(img.contours), "contour(s) in:", img.name)
 
