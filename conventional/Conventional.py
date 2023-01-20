@@ -58,12 +58,13 @@ class image():
         cv.putText(original_image, kind_of_object, (x, y-10), cv.FONT_HERSHEY_SIMPLEX, 1.2, black[1], 4)
 
 class object():
-    def __init__(self, outline, kind_of_object: str, position: tuple, oriëntation: float, color: str):
+    def __init__(self, outline, kind_of_object: str, position: tuple, oriëntation: float, color: str, squirness: float):
         self.kind_of_object = kind_of_object
         self.color          = color
         self.position       = position
         self.oriëntation    = oriëntation
         self.outline        = outline
+        self.squirness      = squirness
 
 # -=-=-=- VARIABLES -=-=-=- #
 
@@ -132,6 +133,8 @@ def find_object(contour, moment, mask) -> str:
         return 'ring'
     elif perc_nut < 0.04:
         return 'nut'
+    elif contour.squirness < 1:
+        return 'metal attachment'
     else:
         return 'bolt'
 
@@ -206,7 +209,7 @@ for img in images:
             identified_item = find_object(contour, moment, mask_with_color)
             
             # -=- add object to list -=- #
-            img.add_contour(object(contour, identified_item, (cX, cY), angle, color))
+            img.add_contour(object(contour, identified_item, (cX, cY), angle, color, 2.5))
 
     print("found", len(img.contours), "contour(s) in:", img.name)
 
