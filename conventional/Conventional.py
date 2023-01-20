@@ -118,7 +118,6 @@ def find_object(contour, moment, mask) -> str:
     # check valve check
     blue_mask = np.zeros(mask.shape[:2], dtype="uint8")
     cv.drawContours(blue_mask, [contour], -1, 255, -1)
-    squirness = roundness(contour, moment)
     individual_masks = cv.bitwise_and(mask, mask, mask = blue_mask)
     blue_mask = cv.inRange(individual_masks, lower_blue, upper_blue)
 
@@ -126,6 +125,9 @@ def find_object(contour, moment, mask) -> str:
     k_value = roundness(contour, moment)
     # nut check
     perc_nut = cv.matchShapes(nut_contour_list[0], contour, cv.CONTOURS_MATCH_I1, 0.0)
+    # metal attachment check
+    _, _, w, h = cv.boundingRect(contour)
+    ratio = float(w)/h
 
     if np.mean(blue_mask) > 0:
         return 'check valve'
@@ -133,7 +135,7 @@ def find_object(contour, moment, mask) -> str:
         return 'ring'
     elif perc_nut < 0.04:
         return 'nut'
-    elif squirness < 1.4:
+    elif ratio == 1:
         return 'metal attachment'
     else:
         return 'bolt'
