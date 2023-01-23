@@ -75,7 +75,7 @@ if there are any problems please open a ticket or send me a message *(The requir
 │   │   ├── events.out.tfevents.1674069579.LAPTOP-3VKG848S.19124.0
 │   │   ├── last_checkpoint
 │   │   ├── metrics.json
-│   │   └── model_final.pth <- Our weigths for classification, verry important
+│   │   └── model_final.pth <- Our weigths for classification, very important
 │   ├── 'output_test'
 │   │   ├── Image0-labeled.jpg
 │   │   └── ...
