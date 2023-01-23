@@ -56,40 +56,48 @@ if there are any problems please open a ticket or send me a message *(The requir
 
 ```bash
 ├── conventional
-│   ├── input_conventional <- here are the input images for conventional image processing
+│   ├── 'input_conventional' <- here are the input images for conventional image processing
 │   │   ├── img_1.jpg
-│   │   ├── ...
-│   ├── output_conventional <- these are the output images for conventional image processing
+│   │   └── ...
+│   ├── 'labeled_images' <- these are images for contour detection inside conventional.py
+│   │   ├── bolt.jpg
+│   │   └── nut.jpg
+│   ├── 'output_conventional' <- these are the output images for conventional image processing
 │   │   ├── img_1.jpg
-│   │   ├── ...
+│   │   └── ...
 │   ├── Conventional.py <- file to run for identifying objects and there features using conventional methods
-│   ├── output_data.csv <- output file where you can find data of every contour in the images
-│
+│   └── output_data.csv <- output file where you can find data of every contour in the images
 ├── deep_learning
-│   ├── output <- our output folder, currently occupied with a placeholder
+│   ├── '__pycache__' <- custom config files, should not  have to touch these
+│   │   ├── classification.cpython-38.pyc
+│   │   └── ...
+│   ├── 'output' 
+│   │   ├── events.out.tfevents.1674069579.LAPTOP-3VKG848S.19124.0
+│   │   ├── last_checkpoint
+│   │   ├── metrics.json
+│   │   └── model_final.pth <- Our weigths for classification, verry important
+│   ├── 'output_test'
+│   │   ├── Image0-labeled.jpg
+│   │   └── ...
+│   ├── 'test' <- folder with files to test our alghoritm
 │   │   ├── img_1.jpg
-│   │   ├── ...
-│   ├── test <- folder with files to test our alghoritm
-│   │   ├── img_1.jpg
-│   │   ├── ...
-│   ├── train <- training folder, here should be the bulk of our images
+│   │   └── ...
+│   ├── 'train' <- training folder, here should be the bulk of our images
 │   │   ├── annotations.json <- has annotations for our project. can be opened with vgg image annotator 
 │   │   ├── img_1.jpg
-│   │   ├── ...
-│   ├── valid <- map for validation
+│   │   └── ...
+│   ├── 'valid' <- map for validation
 │   │   ├── img_1.jpg
-│   │   ├── ...
-│   │   
-│   ├── classification.py <- ...
-│   ├── custom_config_detectron.py <- the custom configuration file
-│   ├── environment.yml <- .yml file for the environment
-│   ├── predicting.py <- file to run for identifying objects and there features using detectron2
-│   ├── training.py <- the training file
-│
-├── image_objects_ordered <- just an image for the README.md (can be used for validation)
-│   ├── val_image.jpg
-│   ├── conding.txt
-│
+│   │   └── ...
+│   ├── custom_config_detectron2.py <- the custom configuration file
+│   ├── det_clas.py 
+│   ├── environment.yml 
+│   ├── output_data_det.csv <- file with output data
+│   └── test_notebook.ipynb
+├── 'image_objects_ordered' <- just an image for the README.md (can be used for validation)
+│   ├── conding.txt 
+│   └── val_image.jpg
+├── .gitattributes
 ├── .gitignore
 ├── README.md
 └── requirements.txt
@@ -110,7 +118,7 @@ or
 
 ```ShellSession
 
-$ python ./DeepLearning.py
+$ python det_pred.py
 ```
 
 Depending on your preference. 
